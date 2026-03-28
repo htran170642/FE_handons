@@ -1,0 +1,80 @@
+export const hotels = [
+  {
+    id: 1,
+    name: "Hanoi Luxury Hotel",
+    city: "Hanoi",
+    rating: 8.7,
+    ratingLabel: "Excellent",
+    price: 120,
+    image: "https://placehold.co/300x200?text=Hanoi+Hotel",
+    description: "A luxury hotel in the heart of Hanoi, close to Hoan Kiem Lake.",
+  },
+  {
+    id: 2,
+    name: "Saigon Grand Palace",
+    city: "Ho Chi Minh City",
+    rating: 9.1,
+    ratingLabel: "Exceptional",
+    price: 180,
+    image: "https://placehold.co/300x200?text=Saigon+Hotel",
+    description: "Modern hotel with rooftop pool overlooking the city skyline.",
+  },
+  {
+    id: 3,
+    name: "Da Nang Beach Resort",
+    city: "Da Nang",
+    rating: 8.4,
+    ratingLabel: "Very Good",
+    price: 95,
+    image: "https://placehold.co/300x200?text=Da+Nang+Resort",
+    description: "Beachfront resort with direct access to My Khe Beach.",
+  },
+  {
+    id: 4,
+    name: "Hoi An Ancient Boutique",
+    city: "Hoi An",
+    rating: 9.3,
+    ratingLabel: "Exceptional",
+    price: 110,
+    image: "https://placehold.co/300x200?text=Hoi+An+Hotel",
+    description: "Charming boutique hotel in the UNESCO heritage town of Hoi An.",
+  },
+]
+
+export const rooms = [
+  {
+    id: 1,
+    hotelId: 1,
+    type: "Standard Room",
+    capacity: 2,
+    price: 120,
+    image: "https://placehold.co/200x140?text=Standard",
+    perks: ["Free WiFi", "Air conditioning", "Flat-screen TV"],
+  },
+  {
+    id: 2,
+    hotelId: 1,
+    type: "Deluxe Room",
+    capacity: 2,
+    price: 160,
+    image: "https://placehold.co/200x140?text=Deluxe",
+    perks: ["Free WiFi", "City view", "Mini bar", "Bathtub"],
+  },
+  {
+    id: 3,
+    hotelId: 1,
+    type: "Junior Suite",
+    capacity: 3,
+    price: 220,
+    image: "https://placehold.co/200x140?text=Suite",
+    perks: ["Free WiFi", "Living room", "Panoramic view", "Free breakfast"],
+  },
+]
+
+export const destinations = [
+  { id: 1, name: "Hanoi", image: "https://placehold.co/400x300?text=Hanoi", properties: 1240 },
+  { id: 2, name: "Ho Chi Minh City", image: "https://placehold.co/400x300?text=HCMC", properties: 2100 },
+  { id: 3, name: "Da Nang", image: "https://placehold.co/400x300?text=Da+Nang", properties: 860 },
+  { id: 4, name: "Hoi An", image: "https://placehold.co/400x300?text=Hoi+An", properties: 430 },
+  { id: 5, name: "Nha Trang", image: "https://placehold.co/400x300?text=Nha+Trang", properties: 590 },
+]

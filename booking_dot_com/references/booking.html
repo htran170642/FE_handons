@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking.com - Enter your details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bui_color_brand_primary: #003b95;
+      --bui_color_cta: #006ce4;
+      --bui_color_accent: #ffb700;
+      --bui_color_constructive: #008234;
+      --bui_color_destructive: #d4111e;
+      --bui_color_callout: #f56700;
+      --bui_color_foreground: #1a1a1a;
+      --bui_color_foreground_alt: #595959;
+      --bui_color_border: #868686;
+      --bui_color_border_alt: #e7e7e7;
+      --bui_color_background_alt: #f5f5f5;
+      --bui_color_background_base: #fff;
+      --bui_shadow_100: 0 2px 8px 0 rgba(26, 26, 26, 0.16);
+      --bui_shadow_200: 0 2px 16px 0 rgba(26, 26, 26, 0.24);
+      --bui_font_family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--bui_font_family);
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--bui_color_foreground);
+      background-color: var(--bui_color_background_alt);
+    }
+
+    /* HEADER */
+    .header {
+      background: var(--bui_color_brand_primary);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 400;
+    }
+    .header-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+    }
+    .header-logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .header-logo span { color: var(--bui_color_accent); }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-link {
+      color: #fff;
+      font-size: 13px;
+      text-decoration: none;
+      opacity: 0.9;
+    }
+    .header-link:hover { opacity: 1; text-decoration: underline; }
+    .header-currency {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .header-btn {
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid #fff;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .header-btn-ghost {
+      background: transparent;
+      color: #fff;
+    }
+    .header-btn-ghost:hover { background: rgba(255,255,255,0.15); }
+    .header-btn-solid {
+      background: #fff;
+      color: var(--bui_color_brand_primary);
+    }
+    .header-btn-solid:hover { background: #f0f6ff; }
+
+    /* PROGRESS STEPS */
+    .progress-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--bui_color_border_alt);
+    }
+    .progress-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      gap: 8px;
+      position: relative;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .step + .step::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--bui_color_border_alt);
+      margin: 0 8px;
+    }
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .step.completed .step-num {
+      background: var(--bui_color_cta);
+      color: #fff;
+    }
+    .step.completed .step-label { color: var(--bui_color_cta); }
+    .step.active .step-num {
+      background: var(--bui_color_cta);
+      color: #fff;
+    }
+    .step.active .step-label { color: var(--bui_color_cta); font-weight: 600; }
+    .step.locked .step-num {
+      background: var(--bui_color_border_alt);
+      color: var(--bui_color_foreground_alt);
+    }
+    .step.locked .step-label { color: var(--bui_color_foreground_alt); }
+    .step-label { font-size: 13px; }
+    .lock-icon {
+      width: 14px;
+      height: 14px;
+      opacity: 0.5;
+    }
+
+    /* MAIN LAYOUT */
+    .main-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      background: #fff;
+      border-radius: 4px;
+      border: 1px solid var(--bui_color_border_alt);
+      overflow: hidden;
+      box-shadow: var(--bui_shadow_100);
+    }
+    .property-image {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+    .sidebar-body { padding: 16px; }
+    .property-stars { display: flex; gap: 2px; margin-bottom: 4px; }
+    .star { color: var(--bui_color_accent); font-size: 12px; }
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bui_color_brand_primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+    }
+    .property-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--bui_color_foreground);
+      margin: 6px 0 4px;
+      line-height: 20px;
+    }
+    .property-address {
+      font-size: 12px;
+      color: var(--bui_color_foreground_alt);
+      line-height: 18px;
+      margin-bottom: 8px;
+    }
+    .property-amenities {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--bui_color_border_alt);
+    }
+    .amenity-icon {
+      font-size: 16px;
+      color: var(--bui_color_foreground_alt);
+    }
+
+    .sidebar-section {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--bui_color_border_alt);
+    }
+    .sidebar-section:last-child { border-bottom: none; }
+    .sidebar-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--bui_color_foreground);
+      margin-bottom: 8px;
+    }
+    .booking-detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .booking-detail-label {
+      font-size: 12px;
+      color: var(--bui_color_foreground_alt);
+      font-weight: 600;
+    }
+    .booking-detail-value {
+      font-size: 12px;
+      color: var(--bui_color_foreground);
+      text-align: right;
+    }
+    .booking-detail-sub {
+      font-size: 11px;
+      color: var(--bui_color_foreground_alt);
+    }
+    .link-small {
+      font-size: 12px;
+      color: var(--bui_color_cta);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .link-small:hover { text-decoration: underline; }
+
+    /* PRICE SUMMARY */
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+    .price-original {
+      font-size: 12px;
+      color: var(--bui_color_foreground_alt);
+      text-decoration: line-through;
+    }
+    .price-discount {
+      font-size: 12px;
+      color: var(--bui_color_constructive);
+      font-weight: 600;
+    }
+    .deals-tag {
+      display: inline-block;
+      background: var(--bui_color_constructive);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 2px;
+      margin-left: 4px;
+    }
+    .price-final-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--bui_color_foreground);
+    }
+    .price-final-amount {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--bui_color_foreground);
+      line-height: 1.2;
+    }
+    .price-strikethrough {
+      font-size: 12px;
+      color: var(--bui_color_foreground_alt);
+      text-decoration: line-through;
+      text-align: right;
+    }
+    .price-taxes-note {
+      font-size: 11px;
+      color: var(--bui_color_foreground_alt);
+      text-align: right;
+    }
+    .price-info-box {
+      background: var(--bui_color_background_alt);
+      border-radius: 4px;
+      padding: 10px;
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--bui_color_foreground_alt);
+      line-height: 16px;
+    }
+    .price-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .price-info-item:last-child { margin-bottom: 0; }
+    .price-info-icon { font-size: 14px; flex-shrink: 0; }
+
+    /* MAIN CONTENT CARDS */
+    .content-card {
+      background: #fff;
+      border-radius: 4px;
+      border: 1px solid var(--bui_color_border_alt);
+      box-shadow: var(--bui_shadow_100);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--bui_color_border_alt);
+    }
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--bui_color_foreground);
+    }
+    .card-body { padding: 16px 24px; }
+
+    /* ALERT */
+    .alert-banner {
+      background: #fffaec;
+      border: 1px solid var(--bui_color_accent);
+      border-radius: 4px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #946800;
+    }
+    .alert-icon { font-size: 16px; }
+
+    /* FORM */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .form-group { margin-bottom: 12px; }
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--bui_color_foreground);
+      margin-bottom: 4px;
+    }
+    .form-label .required { color: var(--bui_color_destructive); }
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--bui_color_border);
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: var(--bui_font_family);
+      color: var(--bui_color_foreground);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--bui_color_cta);
+      box-shadow: 0 0 0 3px rgba(0, 108, 228, 0.24);
+    }
+    .form-input::placeholder { color: var(--bui_color_foreground_alt); }
+    .form-select-wrapper { position: relative; }
+    .form-select-wrapper::after {
+      content: '▾';
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--bui_color_foreground_alt);
+      font-size: 12px;
+    }
+    .form-phone-wrapper {
+      display: flex;
+      gap: 8px;
+    }
+    .form-phone-prefix {
+      width: 100px;
+      flex-shrink: 0;
+    }
+    .form-hint {
+      font-size: 12px;
+      color: var(--bui_color_foreground_alt);
+      margin-top: 4px;
+    }
+
+    /* SIGN IN PROMPT */
+    .signin-prompt {
+      background: #f0f6ff;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .signin-prompt a { color: var(--bui_color_cta); text-decoration: none; font-weight: 600; }
+    .signin-prompt a:hover { text-decoration: underline; }
+
+    /* RADIO / CHECKBOX */
+    .radio-group { margin-bottom: 12px; }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .radio-label input[type="radio"],
+    .radio-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--bui_color_cta);
+      cursor: pointer;
+    }
+    .section-subtitle {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--bui_color_foreground);
+      margin-bottom: 8px;
+    }
+    .radio-inline {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* GOOD TO KNOW */
+    .info-box {
+      background: #f0f6ff;
+      border-radius: 4px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 18px;
+      color: var(--bui_color_foreground);
+    }
+    .info-box-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ROOM CARD */
+    .room-amenity-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--bui_color_foreground);
+      margin-bottom: 6px;
+    }
+    .room-amenity-icon { color: var(--bui_color_cta); font-size: 14px; }
+    .badge-green {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f1fef6;
+      color: var(--bui_color_constructive);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .badge-blue {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f0f6ff;
+      color: var(--bui_color_cta);
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .sleeps-icon { font-size: 14px; }
+
+    /* ADD TO STAY */
+    .addon-banner {
+      background: linear-gradient(135deg, #003b95 0%, #0057b8 100%);
+      border-radius: 4px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .addon-banner-icon { font-size: 28px; }
+    .addon-banner-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .addon-banner-sub { font-size: 12px; opacity: 0.85; }
+    .addon-banner-btn {
+      margin-left: auto;
+      background: #fff;
+      color: var(--bui_color_brand_primary);
+      border: none;
+      border-radius: 4px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .addon-banner-btn:hover { background: #f0f6ff; }
+
+    .addon-option {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 12px;
+      border: 1px solid var(--bui_color_border_alt);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .addon-option-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+    .addon-option-body {
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .addon-option-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .addon-option-sub { font-size: 12px; color: var(--bui_color_foreground_alt); margin-bottom: 6px; }
+
+    /* YES/NO RADIO */
+    .yes-no-group {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .yes-no-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .yes-no-option input { accent-color: var(--bui_color_cta); }
+
+    /* SPECIAL REQUESTS */
+    .textarea-field {
+      width: 100%;
+      min-height: 80px;
+      padding: 8px 12px;
+      border: 1px solid var(--bui_color_border);
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: var(--bui_font_family);
+      color: var(--bui_color_foreground);
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .textarea-field:focus {
+      border-color: var(--bui_color_cta);
+      box-shadow: 0 0 0 3px rgba(0, 108, 228, 0.24);
+    }
+    .textarea-note {
+      font-size: 12px;
+      color: var(--bui_color_foreground_alt);
+      margin-top: 4px;
+    }
+
+    /* ARRIVAL TIME */
+    .arrival-info-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .arrival-icon { font-size: 16px; color: var(--bui_color_constructive); }
+
+    /* CRIBS */
+    .cribs-list { list-style: none; padding: 0; margin: 8px 0; }
+    .cribs-list li {
+      font-size: 13px;
+      color: var(--bui_color_foreground);
+      padding: 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cribs-list li::before {
+      content: '•';
+      color: var(--bui_color_foreground_alt);
+    }
+    .cribs-note {
+      font-size: 12px;
+      color: var(--bui_color_foreground_alt);
+      margin-bottom: 8px;
+    }
+    .cribs-read-more { font-size: 12px; color: var(--bui_color_cta); cursor: pointer; text-decoration: none; }
+    .cribs-read-more:hover { text-decoration: underline; }
+
+    /* CTA FOOTER */
+    .cta-footer {
+      background: #fff;
+      border: 1px solid var(--bui_color_border_alt);
+      border-radius: 4px;
+      box-shadow: var(--bui_shadow_100);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .cta-footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .cta-footer-btns {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn-secondary {
+      padding: 10px 20px;
+      border: 2px solid var(--bui_color_cta);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--bui_color_cta);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--bui_font_family);
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-secondary:hover { background: #f0f6ff; }
+    .btn-primary {
+      padding: 10px 20px;
+      border: 2px solid var(--bui_color_cta);
+      border-radius: 4px;
+      background: var(--bui_color_cta);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--bui_font_family);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: #0057b8; border-color: #0057b8; }
+    .cta-conditions-link {
+      font-size: 12px;
+      color: var(--bui_color_cta);
+      text-decoration: none;
+    }
+    .cta-conditions-link:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--bui_color_background_alt);
+      border-top: 1px solid var(--bui_color_border_alt);
+      padding: 16px;
+      text-align: center;
+      margin-top: 24px;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+    .footer-link { font-size: 12px; color: var(--bui_color_cta); text-decoration: none; }
+    .footer-link:hover { text-decoration: underline; }
+    .footer-copy { font-size: 11px; color: var(--bui_color_foreground_alt); }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: var(--bui_color_border_alt);
+      margin: 12px 0;
+    }
+
+    /* SECTION GAP INSIDE CARD */
+    .section-gap { margin-top: 16px; }
+
+    /* VERIFY CHECKBOX OPTION */
+    .verify-option {
+      background: #f0f6ff;
+      border: 1px solid #c2deff;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .verify-option input { margin-top: 2px; accent-color: var(--bui_color_cta); }
+
+    /* COMMISSION PROMO */
+    .promo-label {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bui_color_callout);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 2px;
+      margin-bottom: 4px;
+      gap: 3px;
+    }
+
+    /* CANCELLATION TAG */
+    .free-cancel-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .check-green { color: var(--bui_color_constructive); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="header-logo">Booking<span>.</span>com</a>
+    <div class="header-actions">
+      <span class="header-currency">VND ▾</span>
+      <span style="font-size:16px; color:#fff; cursor:pointer; opacity:0.8;" title="Help">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </span>
+      <span style="font-size:16px; color:#fff; cursor:pointer; opacity:0.8;" title="Language">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </span>
+      <a href="#" class="header-link">List your property</a>
+      <a href="#" class="header-btn header-btn-ghost">Register</a>
+      <a href="#" class="header-btn header-btn-solid">Sign in</a>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESS STEPS -->
+<div class="progress-bar">
+  <div class="progress-inner">
+    <div class="step completed">
+      <div class="step-num">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+      </div>
+      <span class="step-label">Your Selection</span>
+    </div>
+    <div class="step active">
+      <div class="step-num">2</div>
+      <span class="step-label">Your Details</span>
+    </div>
+    <div class="step locked">
+      <div class="step-num">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1h.01c1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      </div>
+      <span class="step-label">Final Booking</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <div class="main-container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <img
+        src="https://placehold.co/320x140/8B9DC3/FFFFFF?text=Hotel+Photo"
+        alt="Come Inn Berlin"
+        class="property-image"
+      />
+      <div class="sidebar-body">
+        <!-- Stars & Score -->
+        <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+          <div class="property-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <span class="score-badge" style="background:var(--bui_color_brand_primary); border-radius:6px 6px 6px 0;">7.3</span>
+          <span style="font-size:11px; color:var(--bui_color_foreground_alt);">Good</span>
+        </div>
+
+        <div class="property-name">Come Inn Berlin Kurfürstendamm</div>
+        <div class="property-address">
+          Kurfürstendamm 23, Charlottenburg-Wilmersdorf,<br/>
+          10707 Berlin, Germany<br/>
+          <span style="color:var(--bui_color_cta);">Excellent Location</span> – 9.5
+        </div>
+
+        <!-- Amenity icons -->
+        <div class="property-amenities">
+          <span class="amenity-icon" title="No smoking">🚭</span>
+          <span class="amenity-icon" title="Free WiFi">📶</span>
+          <span class="amenity-icon" title="Parking">🅿</span>
+        </div>
+
+        <!-- Booking Details -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Your booking details</div>
+
+          <div class="booking-detail-row">
+            <div>
+              <div class="booking-detail-label">Check-in</div>
+              <div class="booking-detail-value">Fri, Mar 13, 2026</div>
+              <div class="booking-detail-sub">after 2:00 PM</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="booking-detail-label">Check-out</div>
+              <div class="booking-detail-value">Sat, Mar 15, 2026</div>
+              <div class="booking-detail-sub">before 12:00 PM</div>
+            </div>
+          </div>
+
+          <div style="margin-top:6px;">
+            <span class="booking-detail-sub">Total length of stay:</span>
+            <span class="booking-detail-value" style="font-weight:600; font-size:13px; margin-left:4px;">2 nights</span>
+          </div>
+
+          <a href="#" class="link-small" style="display:inline-block; margin-top:6px;">View your reservation details</a>
+        </div>
+
+        <!-- You Selected -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">You selected</div>
+          <div style="font-size:13px; color:var(--bui_color_foreground_alt); margin-bottom:4px;">
+            2 nights, 1 room for 2 adults
+          </div>
+          <div style="font-size:13px; font-weight:600; color:var(--bui_color_foreground); margin-bottom:4px;">
+            1 x Double Room
+          </div>
+          <a href="#" class="link-small">Change your selection</a>
+        </div>
+
+        <!-- Price Summary -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Your price summary</div>
+
+          <div class="price-row">
+            <span style="font-size:13px; color:var(--bui_color_foreground_alt);">Original price</span>
+            <span class="price-original">VND 4,250,578</span>
+          </div>
+
+          <div class="price-row" style="margin-bottom:8px;">
+            <div>
+              <span style="font-size:13px; color:var(--bui_color_foreground_alt);">Booking.com deals</span>
+              <span class="deals-tag" style="background:#003b95;">GENIUS</span>
+            </div>
+            <span class="price-discount">- VND 804,268</span>
+          </div>
+
+          <div style="border-top:1px solid var(--bui_color_border_alt); padding-top:8px;">
+            <div class="price-row">
+              <span class="price-final-label">Price</span>
+              <div style="text-align:right;">
+                <div class="price-strikethrough">VND 4,353,578</div>
+                <div class="price-final-amount">VND 3,944,748</div>
+                <div class="price-taxes-note">+in property currency: $ 131.63</div>
+              </div>
+            </div>
+            <div style="text-align:right; margin-top:4px;">
+              <span style="font-size:12px; color:var(--bui_color_foreground_alt);">Includes taxes and fees</span>
+            </div>
+          </div>
+
+          <!-- Price info -->
+          <div class="price-info-box">
+            <div class="price-info-item">
+              <span class="price-info-icon">💳</span>
+              <span>Includes VND 369,510 in taxes and fees</span>
+            </div>
+            <div class="price-info-item">
+              <span class="price-info-icon">💵</span>
+              <span>Tax: VND 303,510; 7% VAT included</span>
+            </div>
+            <div class="price-info-item">
+              <span class="price-info-icon">🌍</span>
+              <span>Keep in mind that your card issuer may charge you a foreign transaction fee.</span>
+            </div>
+            <div style="margin-top:6px;">
+              <a href="#" class="link-small">View more</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- How much will it cost to cancel? -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">How much will it cost to cancel?</div>
+          <div style="margin-bottom:6px;">
+            <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px;">
+              <span style="color:var(--bui_color_constructive); font-size:13px;">✓</span>
+              <span style="font-size:12px; color:var(--bui_color_constructive); font-weight:600;">Free cancellation before Mar 12</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span style="font-size:13px; color:var(--bui_color_foreground_alt);">—</span>
+              <span style="font-size:12px; color:var(--bui_color_foreground_alt);">After Mar 12: VND 3,326,104</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <div>
+
+      <!-- SIGN IN PROMPT -->
+      <div class="signin-prompt">
+        <span style="font-size:16px;">👤</span>
+        <span><a href="#">Sign in</a> or book with your saved details or <a href="#">register</a> to manage your bookings on the go!</span>
+      </div>
+
+      <!-- ENTER YOUR DETAILS -->
+      <div class="content-card">
+        <div class="card-header">
+          <div class="card-title">Enter your details</div>
+        </div>
+        <div class="card-body">
+          <!-- Alert -->
+          <div class="alert-banner">
+            <span class="alert-icon">⚠️</span>
+            <span>Almost done! Just fill in the <strong>1 required</strong> info on the 1 required site</span>
+          </div>
+
+          <!-- Name Row -->
+          <div class="form-row">
+            <div>
+              <label class="form-label">First name <span class="required">*</span></label>
+              <input type="text" class="form-input" placeholder="First name" value="John" />
+            </div>
+            <div>
+              <label class="form-label">Last name <span class="required">*</span></label>
+              <input type="text" class="form-input" placeholder="Last name" value="Doe" />
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label">Email address <span class="required">*</span></label>
+            <input type="email" class="form-input" placeholder="Email address" value="john.doe@example.com" />
+            <div class="form-hint">Confirmation email sent to this address</div>
+          </div>
+
+          <!-- Sign in to save -->
+          <div style="margin-bottom:16px;">
+            <label class="radio-label" style="color:var(--bui_color_cta); font-weight:500;">
+              <input type="checkbox" style="accent-color:var(--bui_color_cta);" />
+              Sign in or save your details (optional)
+            </label>
+          </div>
+
+          <!-- Country/Region -->
+          <div class="form-group">
+            <label class="form-label">Country/Region <span class="required">*</span></label>
+            <div class="form-select-wrapper">
+              <select class="form-select">
+                <option>Vietnam</option>
+                <option>Germany</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>France</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label class="form-label">Phone number <span class="required">*</span></label>
+            <div class="form-phone-wrapper">
+              <div class="form-select-wrapper form-phone-prefix">
+                <select class="form-select">
+                  <option>VN +84</option>
+                  <option>DE +49</option>
+                  <option>US +1</option>
+                </select>
+              </div>
+              <input type="tel" class="form-input" placeholder="Phone number" />
+            </div>
+            <div class="form-hint">Needed by the property to verify your booking</div>
+          </div>
+
+          <!-- Verify checkbox -->
+          <div class="verify-option">
+            <input type="checkbox" id="verify" checked />
+            <label for="verify" style="font-size:13px; cursor:pointer;">
+              To verify, I agree to receive free properties confirmation (recommended)
+            </label>
+          </div>
+
+          <!-- Who are you booking for? -->
+          <div class="section-gap">
+            <div class="section-subtitle">Who are you booking for? <span style="font-weight:400; color:var(--bui_color_foreground_alt);">(optional)</span></div>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="booking_for" checked />
+                I'm the main guest
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="booking_for" />
+                I'm booking for someone else
+              </label>
+            </div>
+          </div>
+
+          <!-- Traveling for work? -->
+          <div class="section-gap">
+            <div class="section-subtitle">Are you traveling for work? <span style="font-weight:400; color:var(--bui_color_foreground_alt);">(optional)</span></div>
+            <div class="radio-inline">
+              <label class="radio-label">
+                <input type="radio" name="work_travel" />
+                Yes
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="work_travel" checked />
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOOD TO KNOW -->
+      <div class="content-card">
+        <div class="card-header" style="border-bottom:none; padding-bottom:8px;">
+          <div class="card-title" style="font-size:18px;">Good to know:</div>
+        </div>
+        <div class="card-body" style="padding-top:0;">
+          <div class="info-box" style="background:#fffaec; border:1px solid #ffb700;">
+            <span class="info-box-icon" style="color:#946800;">💡</span>
+            <span>
+              <strong>Stay flexible:</strong> You can cancel for free before March 12, 2025 – lock in this great price today
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOUBLE ROOM DETAILS -->
+      <div class="content-card">
+        <div class="card-header">
+          <div class="card-title" style="font-size:18px;">Double Room</div>
+        </div>
+        <div class="card-body">
+
+          <div class="room-amenity-row">
+            <span class="room-amenity-icon">📶</span>
+            <span>Includes high-speed internet</span>
+            <span style="margin-left:4px; font-size:12px;">
+              <svg style="display:inline; vertical-align:middle;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </span>
+          </div>
+
+          <div class="free-cancel-row">
+            <span class="check-green">✓</span>
+            <span class="badge-green">Free cancellation before March 13 (8.)</span>
+            <svg style="margin-left:4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
+
+          <div class="room-amenity-row">
+            <span class="sleeps-icon">🛏</span>
+            <span>Sleeps: 1 adult</span>
+          </div>
+
+          <div style="margin-top:8px;">
+            <a href="#" class="link-small">Add room guests' details</a>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="badge-blue">
+            <span>✨</span>
+            <span>Exceptionally clean room</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ADD TO YOUR STAY -->
+      <div class="content-card">
+        <div class="card-header">
+          <div class="card-title" style="font-size:18px;">Add to your stay</div>
+        </div>
+        <div class="card-body">
+
+          <!-- Flight promo banner -->
+          <div class="addon-banner">
+            <span class="addon-banner-icon">✈️</span>
+            <div>
+              <div class="addon-banner-title">Still looking for flight options?</div>
+              <div class="addon-banner-sub">Search flights at VND 0 sourced. Existing booking...</div>
+            </div>
+            <button class="addon-banner-btn">Find flights</button>
+          </div>
+
+          <!-- Taxi option -->
+          <div style="border:1px solid var(--bui_color_border_alt); border-radius:4px; padding:14px 16px; margin-bottom:12px;">
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <span style="font-size:28px; flex-shrink:0;">🚕</span>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--bui_color_foreground); margin-bottom:4px;">Want to book a taxi or shuttle ride in advance?</div>
+                <div style="font-size:12px; color:var(--bui_color_foreground_alt); margin-bottom:8px;">Save time – add a transfer to or from the airport now. You can cancel for free if your plans change.</div>
+                <div class="yes-no-group">
+                  <label class="yes-no-option">
+                    <input type="radio" name="taxi" />
+                    Yes
+                  </label>
+                  <label class="yes-no-option">
+                    <input type="radio" name="taxi" checked />
+                    No
+                  </label>
+                </div>
+              </div>
+              <div style="flex-shrink:0; width:80px; height:64px; border-radius:4px; overflow:hidden;">
+                <img src="https://placehold.co/80x64/2C3E50/ECEFF4?text=🚕" style="width:100%; height:100%; object-fit:cover;" alt="Taxi" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Car rental option -->
+          <div style="border:1px solid var(--bui_color_border_alt); border-radius:4px; padding:14px 16px; margin-bottom:12px;">
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <span style="font-size:28px; flex-shrink:0;">🚗</span>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--bui_color_foreground); margin-bottom:4px;">Want to book a car or shuttle ride in advance?</div>
+                <div style="font-size:12px; color:var(--bui_color_foreground_alt); margin-bottom:8px;">Search for great rental car options – just add your rental option to your booking confirmation.</div>
+                <div class="yes-no-group">
+                  <label class="yes-no-option">
+                    <input type="radio" name="car" />
+                    Yes
+                  </label>
+                  <label class="yes-no-option">
+                    <input type="radio" name="car" checked />
+                    No
+                  </label>
+                </div>
+              </div>
+              <div style="flex-shrink:0; width:80px; height:64px; border-radius:4px; overflow:hidden;">
+                <img src="https://placehold.co/80x64/1A535C/FFFFFF?text=🚗" style="width:100%; height:100%; object-fit:cover;" alt="Car" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SPECIAL REQUESTS -->
+      <div class="content-card">
+        <div class="card-header">
+          <div class="card-title" style="font-size:18px;">Special requests</div>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px; color:var(--bui_color_foreground_alt); margin-bottom:12px; line-height:20px;">
+            Special requests cannot be guaranteed, but the property will do best to meet your needs. You can always make a special request after your booking is complete.
+          </p>
+          <textarea class="textarea-field" placeholder="Please write your requests in English or German. (optional)"></textarea>
+          <div class="textarea-note">Please write your requests in English or German. (optional)</div>
+        </div>
+      </div>
+
+      <!-- YOUR ARRIVAL TIME -->
+      <div class="content-card">
+        <div class="card-header">
+          <div class="card-title" style="font-size:18px;">Your arrival time</div>
+        </div>
+        <div class="card-body">
+          <div class="arrival-info-row">
+            <span class="arrival-icon">🕑</span>
+            <span style="font-size:13px;">Your room will be ready for check-in at 2:00 PM</span>
+          </div>
+          <div class="arrival-info-row">
+            <span class="arrival-icon">🏨</span>
+            <span style="font-size:13px;">24-hour front desk – help whenever you need it</span>
+          </div>
+          <div style="margin-top:12px;">
+            <label class="form-label">Add your estimated arrival time <span style="font-weight:400; color:var(--bui_color_foreground_alt);">(optional)</span></label>
+            <div class="form-select-wrapper" style="max-width:220px;">
+              <select class="form-select">
+                <option value="">Please select</option>
+                <option>12:00 PM – 1:00 PM</option>
+                <option>1:00 PM – 2:00 PM</option>
+                <option>2:00 PM – 3:00 PM</option>
+                <option selected>3:00 PM – 4:00 PM</option>
+                <option>4:00 PM – 5:00 PM</option>
+                <option>5:00 PM – 6:00 PM</option>
+                <option>6:00 PM – 7:00 PM</option>
+                <option>I don't know</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CRIBS AND EXTRA BEDS -->
+      <div class="content-card">
+        <div class="card-header">
+          <div class="card-title" style="font-size:18px;">Cribs and extra beds</div>
+        </div>
+        <div class="card-body">
+          <ul class="cribs-list">
+            <li>Requests are subject to availability</li>
+            <li>Requests cannot be confirmed by the property</li>
+            <li>Policies marked "Free" could incur extra charges</li>
+          </ul>
+
+          <div style="margin-top:8px; margin-bottom:4px;">
+            <a href="#" class="cribs-read-more">Read full crib and extra bed policy</a>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="section-subtitle">Add to your Double Room</div>
+
+          <div class="radio-group" style="margin-top:8px;">
+            <label class="radio-label">
+              <input type="radio" name="crib" checked />
+              <div>
+                <span>Crib</span>
+                <span class="badge-green" style="margin-left:8px;">Free</span>
+              </div>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="crib" />
+              Extra bed
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA FOOTER -->
+      <div class="cta-footer">
+        <div>
+          <div style="font-size:13px; color:var(--bui_color_foreground_alt);">Total price</div>
+          <div style="font-size:20px; font-weight:700;">VND 3,944,748</div>
+          <div style="font-size:12px; color:var(--bui_color_foreground_alt);">Includes taxes and fees</div>
+        </div>
+        <div class="cta-footer-right">
+          <div class="cta-footer-btns">
+            <button class="btn-secondary">✈ Air Plus Smart</button>
+            <button class="btn-primary">
+              Next: Final details
+              <span>›</span>
+            </button>
+          </div>
+          <a href="#" class="cta-conditions-link">What are my booking conditions?</a>
+        </div>
+      </div>
+
+    </div><!-- /right column -->
+  </div><!-- /main-container -->
+</main>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="#" class="footer-link">About Booking.com</a>
+    <a href="#" class="footer-link">Customer Service Help</a>
+    <a href="#" class="footer-link">Terms of Service</a>
+    <a href="#" class="footer-link">Privacy Notice</a>
+  </div>
+  <div class="footer-copy">Copyright © 1996–2026 Booking.com™. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

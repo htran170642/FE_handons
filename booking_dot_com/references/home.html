@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking.com | Hotels, flights, car hire &amp; more</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-dark: #003580;
+      --blue-hero: #003b95;
+      --blue-action: #0071c2;
+      --blue-action-hover: #005fa2;
+      --yellow: #febb02;
+      --yellow-hover: #f5a623;
+      --text-dark: #1a1a2e;
+      --text-body: #333;
+      --text-muted: #6b6b6b;
+      --text-light: #999;
+      --border: #e7e7e7;
+      --bg-light: #f2f2f2;
+      --bg-white: #fff;
+      --green: #008234;
+      --container: 1140px;
+      --radius: 4px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: var(--text-body);
+      background: #fff;
+      line-height: 1.5;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--blue-dark);
+      position: sticky;
+      top: 0;
+      z-index: 400;
+    }
+
+    .header-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .logo svg { width: 32px; height: 32px; }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 8px;
+    }
+
+    .nav-tab {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 10px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .nav-tab:hover { background: rgba(255,255,255,0.1); }
+    .nav-tab.active { border-color: #fff; }
+
+    .nav-tab svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .header-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-link {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .header-link:hover { background: rgba(255,255,255,0.1); }
+
+    .btn-signin {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: var(--radius);
+      border: 1.5px solid #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .btn-signin:hover { background: rgba(255,255,255,0.1); }
+
+    .btn-register {
+      color: var(--blue-dark);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: var(--radius);
+      border: 1.5px solid #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .btn-register:hover { background: #f0f0f0; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--blue-hero);
+      padding: 40px 0 0;
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px 24px;
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    /* Search box */
+    .search-box {
+      background: var(--yellow);
+      border-radius: var(--radius);
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-field {
+      flex: 1;
+      min-width: 200px;
+      background: #fff;
+      border: 1px solid #b2b2b2;
+      border-radius: var(--radius);
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .search-field:focus-within { border-color: var(--blue-action); box-shadow: 0 0 0 2px rgba(0,113,194,0.3); }
+
+    .search-field svg { color: #6b6b6b; flex-shrink: 0; width: 18px; height: 18px; }
+
+    .search-field input,
+    .search-field span {
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: var(--text-dark);
+      width: 100%;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .search-field input::placeholder { color: var(--text-dark); }
+
+    .search-dates {
+      display: flex;
+      gap: 0;
+      flex: 0 0 auto;
+    }
+
+    .search-date {
+      background: #fff;
+      border: 1px solid #b2b2b2;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 8px;
+      cursor: pointer;
+      min-width: 150px;
+    }
+
+    .search-date:first-child { border-radius: var(--radius) 0 0 var(--radius); border-right: none; }
+    .search-date:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+
+    .search-date svg { color: #6b6b6b; width: 18px; height: 18px; flex-shrink: 0; }
+
+    .search-date-text { display: flex; flex-direction: column; }
+    .search-date-text .label { font-size: 11px; color: var(--text-muted); }
+    .search-date-text .value { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+
+    .search-guests {
+      background: #fff;
+      border: 1px solid #b2b2b2;
+      border-radius: var(--radius);
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 8px;
+      cursor: pointer;
+      min-width: 170px;
+    }
+
+    .search-guests svg { color: #6b6b6b; width: 18px; height: 18px; flex-shrink: 0; }
+    .search-guests span { font-size: 14px; color: var(--text-dark); }
+
+    .btn-search {
+      background: var(--blue-action);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 0 24px;
+      height: 48px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .btn-search:hover { background: var(--blue-action-hover); }
+
+    .search-advanced {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-advanced label {
+      color: #fff;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .search-advanced input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--blue-action);
+    }
+
+    /* Property type tabs */
+    .prop-tabs {
+      background: var(--blue-hero);
+      padding: 0 24px;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    .prop-tabs-inner {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 0;
+    }
+
+    .prop-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 18px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      opacity: 0.7;
+      transition: opacity 0.15s, border-color 0.15s;
+    }
+
+    .prop-tab:hover { opacity: 1; }
+    .prop-tab.active { border-bottom-color: #fff; opacity: 1; }
+    .prop-tab svg { width: 22px; height: 22px; }
+
+    /* ── MAIN CONTENT ── */
+    .main { background: #f2f2f2; }
+
+    .section-wrap {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 24px 24px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: -12px;
+      margin-bottom: 16px;
+    }
+
+    /* ── RECENT SEARCHES ── */
+    .recent-section { background: #fff; border-bottom: 1px solid var(--border); }
+
+    .recent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .recent-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      cursor: pointer;
+      background: #fff;
+      transition: box-shadow 0.15s;
+      min-height: 80px;
+    }
+
+    .recent-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+
+    .recent-card img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+
+    .recent-info h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .recent-info p { font-size: 12px; color: var(--text-muted); }
+
+    /* ── WHITE CONTENT SECTIONS ── */
+    .white-section { background: #fff; margin-top: 8px; }
+
+    /* ── RECOMMENDED CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .cards-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cards-grid-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .prop-card {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .prop-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .prop-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .prop-card-body { padding: 12px; }
+
+    .prop-card-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue-action);
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .prop-card-location {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .prop-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .rating-badge {
+      background: var(--blue-dark);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 4px 4px 4px 0;
+      flex-shrink: 0;
+    }
+
+    .rating-label { font-size: 12px; font-weight: 600; color: var(--text-dark); }
+    .rating-count { font-size: 11px; color: var(--text-muted); }
+
+    .prop-card-price {
+      text-align: right;
+      margin-top: 8px;
+    }
+
+    .price-from { font-size: 11px; color: var(--text-muted); }
+    .price-value { font-size: 18px; font-weight: 700; color: var(--text-dark); }
+    .price-night { font-size: 11px; color: var(--text-muted); }
+
+    /* ── POPULAR DESTINATION GRID ── */
+    .dest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 200px 200px;
+      gap: 8px;
+    }
+
+    .dest-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .dest-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .dest-card:hover img { transform: scale(1.04); }
+
+    .dest-card.large { grid-row: span 2; }
+
+    .dest-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+    }
+
+    .dest-info {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      color: #fff;
+    }
+
+    .dest-info h3 { font-size: 16px; font-weight: 700; }
+    .dest-info p { font-size: 13px; opacity: 0.85; }
+
+    /* ── STAYS SECTION ── */
+    .stays-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    /* ── WEEKEND DEALS ── */
+    .weekend-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    /* ── UNIQUE PROPERTIES ── */
+    .unique-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .unique-card {
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.15s;
+    }
+
+    .unique-card:hover { transform: translateY(-2px); }
+
+    .unique-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .unique-card-info { padding: 8px 0; }
+    .unique-card-info h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .unique-card-info p { font-size: 12px; color: var(--text-muted); }
+
+    /* ── GENIUS BANNER ── */
+    .genius-banner {
+      background: var(--blue-dark);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .genius-content { max-width: 520px; }
+
+    .genius-content h2 {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .genius-content p {
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .btn-genius {
+      background: var(--blue-action);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      transition: background 0.15s;
+    }
+
+    .btn-genius:hover { background: var(--blue-action-hover); }
+
+    .genius-illustration {
+      flex-shrink: 0;
+      width: 200px;
+      height: 160px;
+      position: relative;
+    }
+
+    /* ── EXPLORE SECTION ── */
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+
+    .explore-card {
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .explore-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .explore-card p {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue-action);
+    }
+
+    /* ── POPULAR DESTINATIONS ── */
+    .pop-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .pop-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .pop-col ul { list-style: none; }
+
+    .pop-col ul li {
+      margin-bottom: 6px;
+    }
+
+    .pop-col ul li a {
+      font-size: 13px;
+      color: var(--blue-action);
+      text-decoration: underline;
+    }
+
+    .pop-col ul li a:hover { color: var(--blue-action-hover); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-links {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 32px;
+    }
+
+    .footer-col h5 {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      font-size: 12px;
+      color: var(--text-body);
+    }
+
+    .footer-col ul li a:hover { text-decoration: underline; }
+
+    .footer-bottom {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-bottom-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom-links a:hover { text-decoration: underline; }
+
+    /* ── BADGE / TAG ── */
+    .badge-genius {
+      background: #fff;
+      color: var(--blue-dark);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .tag-discount {
+      background: #cc0000;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .green-text { color: var(--green); font-weight: 600; }
+    .price-strike { text-decoration: line-through; color: var(--text-muted); font-size: 12px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .see-all {
+      font-size: 14px;
+      color: var(--blue-action);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .see-all:hover { text-decoration: underline; }
+
+    /* ── OFFERS SECTION ── */
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .offer-card {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #fff;
+      transition: box-shadow 0.15s;
+    }
+
+    .offer-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
+
+    .offer-card-img {
+      width: 130px;
+      flex-shrink: 0;
+      object-fit: cover;
+      align-self: stretch;
+    }
+
+    .offer-card-body {
+      padding: 14px 16px;
+      flex: 1;
+    }
+
+    .offer-card-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .offer-card-body p { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+
+    .btn-offer {
+      background: var(--blue-action);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-offer:hover { background: var(--blue-action-hover); }
+
+    /* ── DIVIDER ── */
+    .divider { height: 6px; background: var(--bg-light); }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 12px 24px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .breadcrumb a { color: var(--blue-action); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: var(--text-muted); }
+
+    /* ── SECTION BG WRAPPER ── */
+    .section-bg-white { background: #fff; }
+    .section-bg-light { background: var(--bg-light); }
+
+    /* Weekend deals card style */
+    .deal-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.15s;
+    }
+
+    .deal-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
+
+    .deal-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .deal-card-body { padding: 12px; }
+    .deal-card-name { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+    .deal-card-location { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+
+    .deal-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .deal-card-price { text-align: right; }
+    .deal-price-label { font-size: 11px; color: var(--text-muted); }
+    .deal-price-value { font-size: 20px; font-weight: 700; color: var(--text-dark); }
+
+    /* ── GENIUS LEVELS INDICATOR ── */
+    .genius-levels {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .genius-level-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+    }
+
+    .genius-level-dot.active { background: #fff; }
+
+    /* ── SECTION PROMO CARD (Discover Genius) ── */
+    .promo-section { background: var(--bg-light); }
+  </style>
+</head>
+<body>
+
+<!-- ─────────────────────────────────────── HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="4" fill="#fff"/>
+        <path d="M8 8h4v10H8V8zm0 12h4v4H8v-4zm6-12h4v4h-4V8zm0 6h4v10h-4V14z" fill="#003580"/>
+        <path d="M20 8h4v16h-4V8z" fill="#003580"/>
+      </svg>
+      booking.com
+    </a>
+
+    <!-- Navigation tabs -->
+    <nav class="header-nav">
+      <a href="#" class="nav-tab active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20v-8l9-6 9 6v8"/><path d="M9 20v-6h6v6"/></svg>
+        Stays
+      </a>
+      <a href="#" class="nav-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 11 1 10 6-3 6 3 1-10"/><path d="m5 11 7-9 7 9"/></svg>
+        Flights
+      </a>
+      <a href="#" class="nav-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r=".5" fill="currentColor"/><circle cx="20" cy="21" r=".5" fill="currentColor"/></svg>
+        Car rentals
+      </a>
+      <a href="#" class="nav-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Attractions
+      </a>
+      <a href="#" class="nav-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 00-2-2H4a2 2 0 00-2 2v11a1 1 0 001 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 001-1v-3.65a1 1 0 00-.22-.624l-3.48-4.35A1 1 0 0017.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+        Airport taxis
+      </a>
+    </nav>
+
+    <!-- Right actions -->
+    <div class="header-right">
+      <a href="#" class="header-link">List your property</a>
+      <a href="#" class="header-link" style="display:flex;align-items:center;gap:4px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </a>
+      <a href="#" class="header-link" style="display:flex;align-items:center;gap:4px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        EN
+      </a>
+      <a href="#" class="btn-signin">Sign in</a>
+      <a href="#" class="btn-register">Register</a>
+    </div>
+  </div>
+</header>
+
+<!-- ─────────────────────────────────────── HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Find your next stay</h1>
+    <p>Search low prices on hotels, homes and much more...</p>
+
+    <!-- Search box -->
+    <div class="search-box">
+      <!-- Destination -->
+      <div class="search-field" style="min-width:260px;flex:2;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <input type="text" placeholder="Where are you going?" />
+      </div>
+
+      <!-- Dates -->
+      <div class="search-dates">
+        <div class="search-date">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <div class="search-date-text">
+            <span class="label">Check-in date</span>
+            <span class="value">Mon 17 Mar</span>
+          </div>
+        </div>
+        <div class="search-date">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <div class="search-date-text">
+            <span class="label">Check-out date</span>
+            <span class="value">Wed 19 Mar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guests -->
+      <div class="search-guests">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        <span>2 adults · 0 children · 1 room</span>
+      </div>
+
+      <!-- Search button -->
+      <button class="btn-search">Search</button>
+    </div>
+
+    <!-- Advanced options -->
+    <div class="search-advanced">
+      <label>
+        <input type="checkbox" />
+        I'm travelling for work
+      </label>
+    </div>
+  </div>
+
+  <!-- Property type tabs -->
+  <div style="max-width:var(--container);margin:0 auto;padding:0 24px;">
+    <div class="prop-tabs-inner">
+      <div class="prop-tab active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        Entire homes & apartments
+      </div>
+      <div class="prop-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Apartments
+      </div>
+      <div class="prop-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Resorts
+      </div>
+      <div class="prop-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        Villas
+      </div>
+      <div class="prop-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        Cabins
+      </div>
+      <div class="prop-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+        Homestays
+      </div>
+      <div class="prop-tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/></svg>
+        Guest houses
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────── MAIN -->
+<main class="main">
+
+  <!-- ── RECENT SEARCHES ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <h2 class="section-title">Your recent searches</h2>
+      <div class="recent-grid">
+        <div class="recent-card">
+          <img src="https://placehold.co/56x56/e8d5b0/8B6914?text=BER" alt="Berlin" />
+          <div class="recent-info">
+            <h4>Berlin</h4>
+            <p>17 Mar – 19 Mar · 2 adults · 1 room</p>
+          </div>
+        </div>
+        <div class="recent-card">
+          <img src="https://placehold.co/56x56/c8dde8/2c6e8a?text=MUN" alt="Munich" />
+          <div class="recent-info">
+            <h4>Munich</h4>
+            <p>22 Mar – 25 Mar · 2 adults · 1 room</p>
+          </div>
+        </div>
+        <div class="recent-card">
+          <img src="https://placehold.co/56x56/d8e8c8/4a7c2e?text=HAM" alt="Hamburg" />
+          <div class="recent-info">
+            <h4>Hamburg</h4>
+            <p>28 Mar – 30 Mar · 1 adult · 1 room</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── RECOMMENDED FOR BERLIN ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" style="margin-bottom:4px">Recommended for Berlin</h2>
+          <p style="font-size:14px;color:var(--text-muted)">Properties ranked based on your search</p>
+        </div>
+        <a href="#" class="see-all">See all</a>
+      </div>
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/320x180/d4c5a9/5a4a2e?text=Hotel+Berlin" alt="Hotel Berlin" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Hotel Berlin Central</div>
+            <div class="prop-card-location">Berlin City Centre · 0.3 km from centre</div>
+            <div class="prop-card-rating">
+              <span class="rating-badge">8.9</span>
+              <span class="rating-label">Superb</span>
+              <span class="rating-count">2,412 reviews</span>
+            </div>
+            <div class="prop-card-price">
+              <div class="price-from">1 night, 2 adults</div>
+              <div><span class="price-value">€89</span></div>
+              <div class="price-night">+ €18 taxes and fees</div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/320x180/b8ccd4/2c5a6a?text=Mitte+Apartment" alt="Mitte Apartment" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Mitte Luxury Apartment</div>
+            <div class="prop-card-location">Berlin-Mitte · 0.8 km from centre</div>
+            <div class="prop-card-rating">
+              <span class="rating-badge">9.1</span>
+              <span class="rating-label">Wonderful</span>
+              <span class="rating-count">876 reviews</span>
+            </div>
+            <div class="prop-card-price">
+              <div class="price-from">1 night, 2 adults</div>
+              <div><span class="price-value">€124</span></div>
+              <div class="price-night">+ €22 taxes and fees</div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/320x180/c4d4b8/3a5a2e?text=Prenzlauer+Berg" alt="Prenzlauer Berg" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Prenzlauer Berg Boutique</div>
+            <div class="prop-card-location">Prenzlauer Berg · 1.2 km from centre</div>
+            <div class="prop-card-rating">
+              <span class="rating-badge">8.6</span>
+              <span class="rating-label">Excellent</span>
+              <span class="rating-count">1,105 reviews</span>
+            </div>
+            <div class="prop-card-price">
+              <div class="price-from">1 night, 2 adults</div>
+              <div><span class="price-value">€67</span></div>
+              <div class="price-night">+ €12 taxes and fees</div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/320x180/d4b8c4/6a2e5a?text=Kreuzberg+Hotel" alt="Kreuzberg Hotel" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Kreuzberg Design Hotel</div>
+            <div class="prop-card-location">Kreuzberg · 1.5 km from centre</div>
+            <div class="prop-card-rating">
+              <span class="rating-badge">8.4</span>
+              <span class="rating-label">Very good</span>
+              <span class="rating-count">689 reviews</span>
+            </div>
+            <div class="prop-card-price">
+              <div class="price-from">1 night, 2 adults</div>
+              <div><span class="price-value">€75</span></div>
+              <div class="price-night">+ €14 taxes and fees</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── OFFERS ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <h2 class="section-title">Offers</h2>
+      <p style="font-size:14px;color:var(--text-muted);margin-top:-12px;margin-bottom:16px">Promotions, deals and special offers for you</p>
+      <div class="offers-grid">
+        <!-- Offer 1: Genius -->
+        <div class="offer-card">
+          <div style="width:130px;flex-shrink:0;background:linear-gradient(135deg,#003580,#0071c2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:16px;">
+            <div style="width:52px;height:52px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:#003580;">G</div>
+            <div style="color:#febb02;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">GENIUS</div>
+          </div>
+          <div class="offer-card-body">
+            <h3>Genius</h3>
+            <p>Sign in to see all discounts and benefits of the Genius loyalty programme.</p>
+            <button class="btn-offer">Sign in</button>
+          </div>
+        </div>
+        <!-- Offer 2: Monthly escapes -->
+        <div class="offer-card">
+          <div style="width:130px;flex-shrink:0;background:linear-gradient(135deg,#e8a825,#f5c842);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+            <img src="https://placehold.co/130x160/e8a825/ffffff?text=🌴+Monthly" style="width:130px;height:100%;object-fit:cover;" alt="Monthly Escapes" />
+          </div>
+          <div class="offer-card-body">
+            <h3>Monthly Escapes</h3>
+            <p>Save 15% or more when you book and stay between 7 and 30 nights.</p>
+            <button class="btn-offer">Find longer stays</button>
+          </div>
+        </div>
+        <!-- Offer 3: Fly stay explore -->
+        <div class="offer-card">
+          <div style="width:130px;flex-shrink:0;background:linear-gradient(135deg,#0071c2,#003580);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+            <img src="https://placehold.co/130x160/0071c2/ffffff?text=✈+Explore" style="width:130px;height:100%;object-fit:cover;" alt="Deals" />
+          </div>
+          <div class="offer-card-body">
+            <h3>Fly, stay and explore</h3>
+            <p>Get inspiration for your next trip with hotels, flights and attractions.</p>
+            <button class="btn-offer">Explore deals</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── TOP POPULAR IN BERLIN ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <div class="section-header">
+        <h2 class="section-title">Top popular in Berlin</h2>
+        <a href="#" class="see-all">See all properties in Berlin</a>
+      </div>
+      <!-- Big grid of destination images -->
+      <div class="dest-grid">
+        <div class="dest-card large">
+          <img src="https://placehold.co/400x460/7a9cbf/ffffff?text=Brandenburg+Gate" alt="Brandenburg Gate" />
+          <div class="dest-overlay"></div>
+          <div class="dest-info">
+            <h3>Brandenburg Gate</h3>
+            <p>Historic landmark district</p>
+          </div>
+        </div>
+        <div class="dest-card">
+          <img src="https://placehold.co/380x220/b8c8d4/2c4a5a?text=Tiergarten" alt="Tiergarten" />
+          <div class="dest-overlay"></div>
+          <div class="dest-info">
+            <h3>Tiergarten</h3>
+            <p>Nature & parks</p>
+          </div>
+        </div>
+        <div class="dest-card">
+          <img src="https://placehold.co/380x220/d4c8b8/5a4a2e?text=Charlottenburg" alt="Charlottenburg" />
+          <div class="dest-overlay"></div>
+          <div class="dest-info">
+            <h3>Charlottenburg</h3>
+            <p>Palace & gardens</p>
+          </div>
+        </div>
+        <div class="dest-card">
+          <img src="https://placehold.co/380x220/c8d4b8/3a5a2e?text=East+Side+Gallery" alt="East Side Gallery" />
+          <div class="dest-overlay"></div>
+          <div class="dest-info">
+            <h3>East Side Gallery</h3>
+            <p>Art & culture</p>
+          </div>
+        </div>
+        <div class="dest-card">
+          <img src="https://placehold.co/380x220/d4b8c8/5a2e4a?text=Museum+Island" alt="Museum Island" />
+          <div class="dest-overlay"></div>
+          <div class="dest-info">
+            <h3>Museum Island</h3>
+            <p>World-class museums</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── BUSINESS PROPERTIES NEAR BERLIN ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" style="margin-bottom:4px">Business properties near in Berlin</h2>
+          <p style="font-size:14px;color:var(--text-muted)">Properties with the facilities and services business travellers need</p>
+        </div>
+        <a href="#" class="see-all">See all</a>
+      </div>
+      <div class="cards-grid" style="grid-template-columns:repeat(4,1fr)">
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/320x180/b8c8e0/1a3a6a?text=Business+Hotel" alt="Business Hotel" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Radisson Collection Berlin</div>
+            <div class="prop-card-location">Berlin City · Conference facilities</div>
+            <div class="prop-card-rating">
+              <span class="rating-badge">8.8</span>
+              <span class="rating-label">Superb</span>
+              <span class="rating-count">3,200 reviews</span>
+            </div>
+            <div class="prop-card-price">
+              <div><span class="price-value">€145</span></div>
+              <div class="price-night">per night</div>
+            </div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/320x180/c0c8d8/2a3a5a?text=Marriott" alt="Marriott Berlin" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Berlin Marriott Hotel</div>
+            <div class="prop-card-location">Potsdamer Platz · 5-star</div>
+            <div class="prop-card-rating">
+              <span class="rating-badge">9.0</span>
+              <span class="rating-label">Wonderful</span>
+              <span class="rating-count">5,114 reviews</span>
+            </div>
+            <div class="prop-card-price">
+              <div><span class="price-value">€198</span></div>
+              <div class="price-night">per night</div>
+            </div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/320x180/c8d0d8/2e4a5a?text=NH+Hotel" alt="NH Hotel" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">NH Berlin Mitte</div>
+            <div class="prop-card-location">Mitte · Free WiFi · Parking</div>
+            <div class="prop-card-rating">
+              <span class="rating-badge">8.3</span>
+              <span class="rating-label">Very good</span>
+              <span class="rating-count">1,876 reviews</span>
+            </div>
+            <div class="prop-card-price">
+              <div><span class="price-value">€112</span></div>
+              <div class="price-night">per night</div>
+            </div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/320x180/d0d8c8/3a5a2e?text=Hilton" alt="Hilton Berlin" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Hilton Berlin</div>
+            <div class="prop-card-location">Gendarmenmarkt · 5-star</div>
+            <div class="prop-card-rating">
+              <span class="rating-badge">8.7</span>
+              <span class="rating-label">Excellent</span>
+              <span class="rating-count">2,543 reviews</span>
+            </div>
+            <div class="prop-card-price">
+              <div><span class="price-value">€179</span></div>
+              <div class="price-night">per night</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── STAY AT OUR UNIQUE PROPERTIES ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <div class="section-header">
+        <h2 class="section-title">Stay at our top unique properties</h2>
+        <a href="#" class="see-all">See all</a>
+      </div>
+      <div class="unique-grid">
+        <div class="unique-card">
+          <img src="https://placehold.co/200x140/e8d5b0/6a5a2e?text=Houseboat" alt="Houseboat" />
+          <div class="unique-card-info">
+            <h4>Houseboats</h4>
+            <p>From €65 per night</p>
+          </div>
+        </div>
+        <div class="unique-card">
+          <img src="https://placehold.co/200x140/c8d8c0/3a5a2e?text=Glamping" alt="Glamping" />
+          <div class="unique-card-info">
+            <h4>Glamping</h4>
+            <p>From €48 per night</p>
+          </div>
+        </div>
+        <div class="unique-card">
+          <img src="https://placehold.co/200x140/d0c8d8/4a2e6a?text=Treehouses" alt="Treehouses" />
+          <div class="unique-card-info">
+            <h4>Treehouses</h4>
+            <p>From €89 per night</p>
+          </div>
+        </div>
+        <div class="unique-card">
+          <img src="https://placehold.co/200x140/d8c8c0/6a3a2e?text=Castles" alt="Castles" />
+          <div class="unique-card-info">
+            <h4>Castles</h4>
+            <p>From €120 per night</p>
+          </div>
+        </div>
+        <div class="unique-card">
+          <img src="https://placehold.co/200x140/c0d0d8/2e4a6a?text=Caves" alt="Cave accommodation" />
+          <div class="unique-card-info">
+            <h4>Caves</h4>
+            <p>From €75 per night</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── DEALS THIS WEEKEND ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" style="margin-bottom:4px">Deals this weekend</h2>
+          <p style="font-size:14px;color:var(--text-muted)">Save on stays for 8 – 9 March</p>
+        </div>
+        <a href="#" class="see-all">See all weekend deals</a>
+      </div>
+      <div class="weekend-grid">
+        <div class="deal-card">
+          <img src="https://placehold.co/320x160/c4d4b8/3a5a2e?text=Spa+Resort" alt="Spa Resort" />
+          <div class="deal-card-body">
+            <div style="margin-bottom:6px"><span class="tag-discount">-20%</span></div>
+            <div class="deal-card-name">Wellness Spa Resort</div>
+            <div class="deal-card-location">Baden-Baden · 45 km from centre</div>
+            <div class="deal-rating">
+              <span class="rating-badge">9.2</span>
+              <span class="rating-label">Wonderful</span>
+            </div>
+            <div class="deal-card-price">
+              <div class="deal-price-label">1 night, 2 adults</div>
+              <div style="display:flex;align-items:baseline;justify-content:flex-end;gap:8px">
+                <span class="price-strike">€199</span>
+                <span class="deal-price-value">€159</span>
+              </div>
+              <div class="price-night green-text">Includes breakfast</div>
+            </div>
+          </div>
+        </div>
+        <div class="deal-card">
+          <img src="https://placehold.co/320x160/d4c4b8/6a4a2e?text=City+Hotel" alt="City Hotel" />
+          <div class="deal-card-body">
+            <div style="margin-bottom:6px"><span class="tag-discount">-15%</span></div>
+            <div class="deal-card-name">Grand City Hotel Frankfurt</div>
+            <div class="deal-card-location">Frankfurt · City centre</div>
+            <div class="deal-rating">
+              <span class="rating-badge">8.5</span>
+              <span class="rating-label">Very good</span>
+            </div>
+            <div class="deal-card-price">
+              <div class="deal-price-label">1 night, 2 adults</div>
+              <div style="display:flex;align-items:baseline;justify-content:flex-end;gap:8px">
+                <span class="price-strike">€118</span>
+                <span class="deal-price-value">€100</span>
+              </div>
+              <div class="price-night green-text">Free cancellation</div>
+            </div>
+          </div>
+        </div>
+        <div class="deal-card">
+          <img src="https://placehold.co/320x160/b8c4d4/2e3a6a?text=Boutique+Hotel" alt="Boutique Hotel" />
+          <div class="deal-card-body">
+            <div style="margin-bottom:6px"><span class="tag-discount">-25%</span></div>
+            <div class="deal-card-name">Hamburg Boutique Hotel</div>
+            <div class="deal-card-location">Hamburg · Harbour area</div>
+            <div class="deal-rating">
+              <span class="rating-badge">9.0</span>
+              <span class="rating-label">Wonderful</span>
+            </div>
+            <div class="deal-card-price">
+              <div class="deal-price-label">1 night, 2 adults</div>
+              <div style="display:flex;align-items:baseline;justify-content:flex-end;gap:8px">
+                <span class="price-strike">€148</span>
+                <span class="deal-price-value">€111</span>
+              </div>
+              <div class="price-night green-text">Genius deal</div>
+            </div>
+          </div>
+        </div>
+        <div class="deal-card">
+          <img src="https://placehold.co/320x160/d4b8c4/6a2e4a?text=Alpine+Lodge" alt="Alpine Lodge" />
+          <div class="deal-card-body">
+            <div style="margin-bottom:6px"><span class="tag-discount">-18%</span></div>
+            <div class="deal-card-name">Alpine Mountain Lodge</div>
+            <div class="deal-card-location">Bavaria · Mountain views</div>
+            <div class="deal-rating">
+              <span class="rating-badge">9.4</span>
+              <span class="rating-label">Exceptional</span>
+            </div>
+            <div class="deal-card-price">
+              <div class="deal-price-label">1 night, 2 adults</div>
+              <div style="display:flex;align-items:baseline;justify-content:flex-end;gap:8px">
+                <span class="price-strike">€220</span>
+                <span class="deal-price-value">€180</span>
+              </div>
+              <div class="price-night green-text">Breakfast included</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── SELECT EXPERIENCES ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" style="margin-bottom:4px">Select experiences</h2>
+          <p style="font-size:14px;color:var(--text-muted)">Find things to do in popular destinations</p>
+        </div>
+      </div>
+      <div class="cards-grid cards-grid-5" style="grid-template-columns:repeat(5,1fr)">
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/280x200/d4c4a8/6a5432?text=Museum+Tour" alt="Museum Tour" style="height:160px;aspect-ratio:auto;" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Berlin Museum Tour</div>
+            <div class="prop-card-location">Guided · 3 hours</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-top:8px">From €18 per person</div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/280x200/c8d4c0/3a5a2e?text=Bike+Tour" alt="Bike Tour" style="height:160px;aspect-ratio:auto;" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Berlin Bike Tour</div>
+            <div class="prop-card-location">Self-guided · Full day</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-top:8px">From €24 per person</div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/280x200/c0c8d8/2e3a6a?text=River+Cruise" alt="River Cruise" style="height:160px;aspect-ratio:auto;" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Spree River Cruise</div>
+            <div class="prop-card-location">Scenic · 2 hours</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-top:8px">From €15 per person</div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/280x200/d4c0c8/6a2e3a?text=Food+Tour" alt="Food Tour" style="height:160px;aspect-ratio:auto;" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Berlin Food &amp; Beer Tour</div>
+            <div class="prop-card-location">Evening · 4 hours</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-top:8px">From €45 per person</div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <img class="prop-card-img" src="https://placehold.co/280x200/d8d4c0/5a4a2e?text=History+Walk" alt="History Walk" style="height:160px;aspect-ratio:auto;" />
+          <div class="prop-card-body">
+            <div class="prop-card-name">Cold War History Walk</div>
+            <div class="prop-card-location">Guided · 2.5 hours</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-top:8px">From €20 per person</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── GENIUS BANNER ── -->
+  <div class="section-bg-light">
+    <div class="section-wrap">
+      <div class="genius-banner">
+        <div class="genius-content">
+          <h2>Discover Genius rewards</h2>
+          <p>
+            Complete 2 stays to unlock Genius Level 2 and get 15% discounts at thousands of properties worldwide.
+          </p>
+          <a href="#" class="btn-genius">Sign in to access deals</a>
+        </div>
+        <!-- Illustration -->
+        <div class="genius-illustration" style="width:240px;height:180px;position:relative;flex-shrink:0;">
+          <!-- Person silhouette -->
+          <div style="position:absolute;bottom:0;right:20px;width:80px;height:140px;display:flex;flex-direction:column;align-items:center;gap:0;">
+            <div style="width:36px;height:36px;background:rgba(255,235,150,0.9);border-radius:50%;"></div>
+            <div style="width:48px;height:70px;background:rgba(255,235,150,0.8);border-radius:8px 8px 0 0;margin-top:-4px;"></div>
+            <div style="width:48px;height:30px;display:flex;gap:4px;">
+              <div style="width:22px;height:30px;background:rgba(255,235,150,0.8);border-radius:0 0 4px 4px;"></div>
+              <div style="width:22px;height:30px;background:rgba(255,235,150,0.8);border-radius:0 0 4px 4px;"></div>
+            </div>
+          </div>
+          <!-- Luggage -->
+          <div style="position:absolute;bottom:0;right:8px;width:28px;height:38px;background:var(--yellow);border-radius:4px;border:2px solid rgba(255,255,255,0.4);">
+            <div style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:14px;height:8px;border:2px solid var(--yellow);border-bottom:none;border-radius:4px 4px 0 0;"></div>
+          </div>
+          <!-- Stars / badges floating -->
+          <div style="position:absolute;top:10px;left:0;background:var(--yellow);color:var(--blue-dark);font-size:11px;font-weight:800;padding:5px 10px;border-radius:20px;">Genius</div>
+          <div style="position:absolute;top:45px;left:10px;background:rgba(255,255,255,0.15);color:#fff;font-size:12px;padding:4px 8px;border-radius:12px;">✦ Level 2</div>
+          <div style="position:absolute;top:80px;left:5px;color:var(--yellow);font-size:18px;">★★★</div>
+          <!-- Plane -->
+          <div style="position:absolute;top:15px;right:10px;font-size:28px;opacity:0.8;">✈</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── EXPLORE GERMANY ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <h2 class="section-title">Explore Germany</h2>
+      <p style="font-size:14px;color:var(--text-muted);margin-top:-12px;margin-bottom:20px">These popular destinations have lots to offer</p>
+      <div class="explore-grid">
+        <div class="explore-card">
+          <img src="https://placehold.co/100x100/c8d4b8/3a5a2e?text=Berlin" alt="Berlin" />
+          <p>Berlin</p>
+        </div>
+        <div class="explore-card">
+          <img src="https://placehold.co/100x100/d4c4b8/6a4a2e?text=Munich" alt="Munich" />
+          <p>Munich</p>
+        </div>
+        <div class="explore-card">
+          <img src="https://placehold.co/100x100/b8c8d4/2e4a6a?text=Hamburg" alt="Hamburg" />
+          <p>Hamburg</p>
+        </div>
+        <div class="explore-card">
+          <img src="https://placehold.co/100x100/c8b8d4/4a2e6a?text=Frankfurt" alt="Frankfurt" />
+          <p>Frankfurt</p>
+        </div>
+        <div class="explore-card">
+          <img src="https://placehold.co/100x100/d4d4b8/5a5a2e?text=Cologne" alt="Cologne" />
+          <p>Cologne</p>
+        </div>
+        <div class="explore-card">
+          <img src="https://placehold.co/100x100/b8d4c8/2e6a4a?text=Dresden" alt="Dresden" />
+          <p>Dresden</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── POPULAR DESTINATIONS ── -->
+  <div class="section-bg-white">
+    <div class="section-wrap">
+      <h2 class="section-title">Popular destinations from Berlin</h2>
+      <div class="pop-grid">
+        <div class="pop-col">
+          <h4>Germany</h4>
+          <ul>
+            <li><a href="#">Munich</a></li>
+            <li><a href="#">Hamburg</a></li>
+            <li><a href="#">Frankfurt</a></li>
+            <li><a href="#">Cologne</a></li>
+            <li><a href="#">Stuttgart</a></li>
+            <li><a href="#">Dresden</a></li>
+          </ul>
+        </div>
+        <div class="pop-col">
+          <h4>Europe</h4>
+          <ul>
+            <li><a href="#">Paris</a></li>
+            <li><a href="#">Amsterdam</a></li>
+            <li><a href="#">Vienna</a></li>
+            <li><a href="#">Prague</a></li>
+            <li><a href="#">Warsaw</a></li>
+            <li><a href="#">Budapest</a></li>
+          </ul>
+        </div>
+        <div class="pop-col">
+          <h4>Beach &amp; Sun</h4>
+          <ul>
+            <li><a href="#">Barcelona</a></li>
+            <li><a href="#">Rome</a></li>
+            <li><a href="#">Lisbon</a></li>
+            <li><a href="#">Athens</a></li>
+            <li><a href="#">Palma</a></li>
+            <li><a href="#">Tenerife</a></li>
+          </ul>
+        </div>
+        <div class="pop-col">
+          <h4>Long haul</h4>
+          <ul>
+            <li><a href="#">New York</a></li>
+            <li><a href="#">Dubai</a></li>
+            <li><a href="#">Bangkok</a></li>
+            <li><a href="#">Tokyo</a></li>
+            <li><a href="#">Bali</a></li>
+            <li><a href="#">Singapore</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ─────────────────────────────────────── FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Safety resource centre</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Discover</h5>
+      <ul>
+        <li><a href="#">Genius loyalty programme</a></li>
+        <li><a href="#">Seasonal and holiday deals</a></li>
+        <li><a href="#">Travel articles</a></li>
+        <li><a href="#">Booking.com for Business</a></li>
+        <li><a href="#">Traveller Review Awards</a></li>
+        <li><a href="#">Car hire</a></li>
+        <li><a href="#">Flight finder</a></li>
+        <li><a href="#">Restaurant reservations</a></li>
+        <li><a href="#">Booking.com for Travel Agents</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Terms and settings</h5>
+      <ul>
+        <li><a href="#">Privacy &amp; cookies</a></li>
+        <li><a href="#">Terms &amp; conditions</a></li>
+        <li><a href="#">Partner dispute</a></li>
+        <li><a href="#">Modern Slavery Statement</a></li>
+        <li><a href="#">Human Rights Statement</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Partners</h5>
+      <ul>
+        <li><a href="#">Extranet login</a></li>
+        <li><a href="#">Become an affiliate</a></li>
+        <li><a href="#">Listing your property on Booking.com</a></li>
+        <li><a href="#">Partner Hub</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>About</h5>
+      <ul>
+        <li><a href="#">About Booking.com</a></li>
+        <li><a href="#">How We Work</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Press centre</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Investor relations</a></li>
+        <li><a href="#">Corporate contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div>
+        Copyright © 1996–2026 Booking.com™. All rights reserved.
+      </div>
+      <div class="footer-bottom-links">
+        <a href="#">About Booking.com</a>
+        <a href="#">Terms &amp; conditions</a>
+        <a href="#">Privacy &amp; cookies</a>
+        <a href="#">Cookie settings</a>
+        <a href="#">Do not sell my personal information</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

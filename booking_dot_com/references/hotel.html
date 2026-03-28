@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Metropole Brussels – Hotel in Brussels | Booking.com</title>
+  <style>
+    :root {
+      --bui_color_brand: #003b95;
+      --bui_color_cta: #006ce4;
+      --bui_color_cta_hover: #0057b8;
+      --bui_color_accent: #ffb700;
+      --bui_color_constructive: #008234;
+      --bui_color_callout: #f56700;
+      --bui_color_destructive: #d4111e;
+      --bui_color_foreground: #1a1a1a;
+      --bui_color_foreground_alt: #595959;
+      --bui_color_border: #868686;
+      --bui_color_border_alt: #e7e7e7;
+      --bui_color_bg: #fff;
+      --bui_color_bg_alt: #f5f5f5;
+      --bui_shadow_100: 0 2px 8px 0 rgba(26,26,26,.16);
+      --bui_shadow_200: 0 2px 16px 0 rgba(26,26,26,.24);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px; line-height: 20px;
+      color: var(--bui_color_foreground);
+      background: #f5f5f5;
+    }
+    a { color: var(--bui_color_cta); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* HEADER */
+    .site-header {
+      background: var(--bui_color_brand);
+      padding: 0;
+    }
+    .header-top {
+      display: flex; align-items: center; gap: 16px;
+      padding: 12px 24px; max-width: 1140px; margin: 0 auto;
+    }
+    .logo {
+      font-size: 28px; font-weight: 800; color: #fff;
+      letter-spacing: -0.5px; white-space: nowrap;
+    }
+    .logo span { color: var(--bui_color_accent); }
+    .header-nav { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
+    .header-nav a {
+      color: #fff; font-size: 13px; padding: 6px 10px;
+      border-radius: 4px; white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .header-nav a:hover { background: rgba(255,255,255,0.15); text-decoration: none; }
+    .header-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+    .btn-outline-white {
+      border: 2px solid #fff; color: #fff;
+      background: transparent; padding: 5px 14px;
+      border-radius: 3px; font-size: 14px; font-weight: 700;
+      cursor: pointer; white-space: nowrap;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.15); }
+    .btn-white {
+      background: #fff; color: var(--bui_color_brand);
+      border: 2px solid #fff; padding: 5px 14px;
+      border-radius: 3px; font-size: 14px; font-weight: 700;
+      cursor: pointer; white-space: nowrap;
+    }
+    .btn-white:hover { background: #e8f0fc; }
+
+    /* SEARCH BAR */
+    .search-bar {
+      background: var(--bui_color_accent);
+      padding: 10px 0;
+    }
+    .search-form {
+      display: flex; gap: 8px; align-items: center;
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+    }
+    .search-input {
+      display: flex; align-items: center; gap: 8px;
+      background: #fff; border: 2px solid var(--bui_color_accent);
+      border-radius: 3px; padding: 8px 12px; flex: 1;
+      min-width: 0; cursor: pointer;
+    }
+    .search-input-icon { color: var(--bui_color_foreground_alt); font-size: 16px; flex-shrink: 0; }
+    .search-input-text { font-size: 14px; color: var(--bui_color_foreground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .search-btn {
+      background: var(--bui_color_cta); color: #fff;
+      border: none; border-radius: 3px; padding: 10px 20px;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .search-btn:hover { background: var(--bui_color_cta_hover); }
+
+    /* BREADCRUMB */
+    .breadcrumb-bar {
+      background: var(--bui_color_brand);
+      padding: 6px 0;
+    }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 4px;
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      font-size: 12px;
+    }
+    .breadcrumb a { color: #fff; opacity: 0.85; }
+    .breadcrumb a:hover { opacity: 1; }
+    .breadcrumb-sep { color: rgba(255,255,255,0.6); font-size: 10px; }
+    .breadcrumb-current { color: #fff; opacity: 0.75; }
+
+    /* MAIN CONTENT */
+    .page-main { max-width: 1140px; margin: 0 auto; padding: 16px 24px 0; }
+
+    /* HOTEL HEADER */
+    .hotel-header {
+      background: #fff;
+      padding: 16px 16px 10px;
+      border-radius: 0;
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--bui_color_border_alt);
+    }
+    .hotel-header-row {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+    }
+    .hotel-meta { flex: 1; }
+    .hotel-badges { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+    .badge-sustainable {
+      background: #ebf9f0; color: #008234;
+      border: 1px solid #c3e9d0; border-radius: 2px;
+      font-size: 11px; font-weight: 700; padding: 2px 6px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .hotel-name {
+      font-size: 24px; font-weight: 700;
+      color: var(--bui_color_foreground); line-height: 32px;
+      margin-bottom: 6px;
+    }
+    .star-rating { display: flex; gap: 2px; align-items: center; }
+    .star { color: var(--bui_color_accent); font-size: 14px; }
+    .hotel-location {
+      font-size: 13px; color: var(--bui_color_foreground_alt);
+      margin-top: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    }
+    .hotel-location a { font-size: 13px; }
+    .location-sep { color: var(--bui_color_border_alt); }
+    .score-box {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0;
+    }
+    .score-row { display: flex; align-items: center; gap: 8px; }
+    .score-label { font-size: 14px; font-weight: 700; text-align: right; }
+    .score-sublabel { font-size: 12px; color: var(--bui_color_foreground_alt); text-align: right; }
+    .score-badge {
+      background: var(--bui_color_brand);
+      color: #fff; font-size: 20px; font-weight: 700;
+      padding: 8px 10px; border-radius: 6px 6px 6px 0;
+      line-height: 1;
+    }
+    .action-buttons { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+    .btn-heart {
+      background: none; border: 1px solid var(--bui_color_cta);
+      color: var(--bui_color_cta); border-radius: 3px;
+      padding: 6px 10px; cursor: pointer; font-size: 14px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .btn-heart:hover { background: #f0f6ff; }
+
+    /* GALLERY */
+    .gallery {
+      background: #000; border-radius: 0 0 4px 4px;
+      overflow: hidden; position: relative;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 3px; height: 400px;
+    }
+    .gallery-main { height: 400px; overflow: hidden; }
+    .gallery-main img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+    }
+    .gallery-thumb { overflow: hidden; position: relative; }
+    .gallery-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .gallery-thumb:hover img { transform: scale(1.03); transition: transform 0.2s; }
+    .gallery-btn {
+      position: absolute; bottom: 12px; right: 12px;
+      background: #fff; border: none; border-radius: 3px;
+      padding: 7px 12px; font-size: 13px; font-weight: 700;
+      cursor: pointer; box-shadow: var(--bui_shadow_100);
+      color: var(--bui_color_foreground);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .gallery-btn:hover { background: #f5f5f5; }
+
+    /* MAIN LAYOUT */
+    .property-layout {
+      display: grid;
+      grid-template-columns: 1fr 336px;
+      gap: 24px; margin-top: 16px; align-items: start;
+    }
+    .property-content { min-width: 0; }
+    .property-sidebar {}
+
+    /* STICKY SIDEBAR */
+    .booking-card {
+      background: #fff; border-radius: 4px;
+      box-shadow: var(--bui_shadow_200);
+      padding: 16px; position: sticky; top: 12px;
+    }
+    .booking-card-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .price-line {
+      font-size: 12px; color: var(--bui_color_foreground_alt);
+      margin-bottom: 4px;
+    }
+    .price-big { font-size: 32px; font-weight: 700; line-height: 1.1; }
+    .price-note { font-size: 12px; color: var(--bui_color_foreground_alt); margin-bottom: 12px; }
+    .date-fields {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 2px solid var(--bui_color_border); border-radius: 3px;
+      margin-bottom: 8px; overflow: hidden;
+    }
+    .date-field {
+      padding: 8px 12px; cursor: pointer;
+      border-right: 1px solid var(--bui_color_border_alt);
+    }
+    .date-field:last-child { border-right: none; }
+    .date-field:hover { background: #f5f5f5; }
+    .date-field label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--bui_color_foreground_alt); }
+    .date-field .date-val { font-size: 14px; font-weight: 400; margin-top: 2px; }
+    .guests-field {
+      border: 2px solid var(--bui_color_border); border-radius: 3px;
+      padding: 8px 12px; margin-bottom: 8px; cursor: pointer;
+    }
+    .guests-field:hover { background: #f5f5f5; }
+    .guests-field label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--bui_color_foreground_alt); }
+    .guests-field .guests-val { font-size: 14px; margin-top: 2px; }
+    .work-check { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 12px; }
+    .work-check input { cursor: pointer; }
+    .btn-reserve {
+      display: block; width: 100%; background: var(--bui_color_cta);
+      color: #fff; font-size: 16px; font-weight: 700;
+      border: none; border-radius: 3px; padding: 14px;
+      cursor: pointer; text-align: center; letter-spacing: 0.01em;
+    }
+    .btn-reserve:hover { background: var(--bui_color_cta_hover); }
+    .no-card {
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px; font-size: 12px; color: var(--bui_color_foreground_alt);
+      margin-top: 8px;
+    }
+    .sidebar-divider { border: none; border-top: 1px solid var(--bui_color_border_alt); margin: 12px 0; }
+    .sidebar-perks { list-style: none; }
+    .sidebar-perks li {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; padding: 4px 0; color: var(--bui_color_foreground_alt);
+    }
+    .perk-icon { color: var(--bui_color_constructive); font-size: 14px; flex-shrink: 0; }
+
+    /* PROPERTY SECTIONS */
+    .section-card {
+      background: #fff; border-radius: 4px;
+      padding: 20px; margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 20px; font-weight: 700; margin-bottom: 16px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--bui_color_border_alt);
+    }
+    .section-title-sm { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+
+    /* FACILITIES HIGHLIGHTS */
+    .facilities-grid {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .facility-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; padding: 4px 0; min-width: 140px;
+    }
+    .facility-icon { font-size: 16px; flex-shrink: 0; }
+
+    /* DESCRIPTION */
+    .description-text {
+      font-size: 14px; line-height: 22px;
+      color: var(--bui_color_foreground_alt); margin-bottom: 12px;
+    }
+    .read-more { color: var(--bui_color_cta); font-size: 13px; font-weight: 700; cursor: pointer; }
+
+    /* ROOM TABLE */
+    .room-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .room-table th {
+      background: var(--bui_color_brand);
+      color: #fff; padding: 10px 12px; text-align: left;
+      font-size: 13px; font-weight: 700;
+    }
+    .room-table td {
+      padding: 12px; border-bottom: 1px solid var(--bui_color_border_alt);
+      vertical-align: top;
+    }
+    .room-table tr:hover td { background: #fafafa; }
+    .room-table tr:last-child td { border-bottom: none; }
+    .room-name { font-weight: 700; color: var(--bui_color_cta); font-size: 14px; margin-bottom: 4px; }
+    .room-detail { font-size: 12px; color: var(--bui_color_foreground_alt); }
+    .room-image { width: 80px; height: 60px; object-fit: cover; border-radius: 2px; margin-right: 8px; float: left; }
+    .room-perks { list-style: none; }
+    .room-perks li { font-size: 12px; color: var(--bui_color_constructive); padding: 1px 0; display: flex; align-items: center; gap: 4px; }
+    .room-price { font-size: 22px; font-weight: 700; line-height: 1.1; }
+    .room-price-note { font-size: 11px; color: var(--bui_color_foreground_alt); }
+    .badge-free-cancel {
+      background: #e8f9ee; color: var(--bui_color_constructive);
+      border-radius: 2px; font-size: 11px; font-weight: 700;
+      padding: 2px 6px; display: inline-block; margin-bottom: 4px;
+    }
+    .badge-limited {
+      background: #fef3ec; color: var(--bui_color_callout);
+      border-radius: 2px; font-size: 11px; font-weight: 700;
+      padding: 2px 6px; display: inline-block; margin-bottom: 4px;
+    }
+    .btn-select {
+      background: var(--bui_color_cta); color: #fff;
+      border: none; border-radius: 3px; padding: 10px 16px;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      display: block; width: 100%; text-align: center; white-space: nowrap;
+    }
+    .btn-select:hover { background: var(--bui_color_cta_hover); }
+
+    /* REVIEWS */
+    .reviews-header { display: flex; gap: 24px; margin-bottom: 20px; align-items: flex-start; }
+    .overall-score-box {
+      background: var(--bui_color_brand); color: #fff;
+      border-radius: 6px 6px 6px 0; padding: 16px 20px;
+      text-align: center; flex-shrink: 0;
+    }
+    .overall-score-num { font-size: 48px; font-weight: 800; line-height: 1; }
+    .overall-score-text { font-size: 16px; font-weight: 700; margin-top: 4px; }
+    .overall-score-count { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+    .review-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; flex: 1; }
+    .review-cat-row { display: flex; flex-direction: column; gap: 2px; }
+    .review-cat-label { font-size: 12px; color: var(--bui_color_foreground_alt); display: flex; justify-content: space-between; }
+    .review-bar { height: 4px; background: var(--bui_color_border_alt); border-radius: 2px; }
+    .review-bar-fill { height: 100%; border-radius: 2px; background: var(--bui_color_brand); }
+    .review-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .review-card {
+      border: 1px solid var(--bui_color_border_alt);
+      border-radius: 4px; padding: 14px;
+    }
+    .review-score-inline {
+      background: var(--bui_color_brand); color: #fff;
+      border-radius: 4px 4px 4px 0; padding: 4px 8px;
+      font-size: 14px; font-weight: 700; display: inline-block;
+      margin-bottom: 8px;
+    }
+    .reviewer-name { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+    .reviewer-meta { font-size: 12px; color: var(--bui_color_foreground_alt); margin-bottom: 8px; }
+    .review-text { font-size: 13px; line-height: 18px; }
+    .review-like { color: var(--bui_color_constructive); display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+    .review-dislike { color: var(--bui_color_callout); display: flex; align-items: flex-start; gap: 4px; }
+
+    /* FACILITIES FULL */
+    .facilities-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .facility-group-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+    .facility-list { list-style: none; }
+    .facility-list li { font-size: 13px; padding: 2px 0; color: var(--bui_color_foreground); display: flex; align-items: center; gap: 6px; }
+    .fac-check { color: var(--bui_color_constructive); font-size: 12px; }
+
+    /* HOUSE RULES */
+    .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .rule-row { display: flex; gap: 16px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--bui_color_border_alt); }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-label { font-size: 13px; font-weight: 700; width: 180px; flex-shrink: 0; }
+    .rule-value { font-size: 13px; color: var(--bui_color_foreground_alt); }
+    .rule-badge-ok { color: var(--bui_color_constructive); }
+    .rule-badge-no { color: var(--bui_color_destructive); }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--bui_color_border_alt); padding: 14px 0; }
+    .faq-q { font-size: 14px; font-weight: 700; margin-bottom: 6px; cursor: pointer; display: flex; justify-content: space-between; }
+    .faq-a { font-size: 13px; color: var(--bui_color_foreground_alt); line-height: 20px; }
+
+    /* NEARBY */
+    .nearby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .nearby-card { border: 1px solid var(--bui_color_border_alt); border-radius: 4px; overflow: hidden; background: #fff; }
+    .nearby-card img { width: 100%; height: 110px; object-fit: cover; display: block; }
+    .nearby-card-body { padding: 10px; }
+    .nearby-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--bui_color_cta); }
+    .nearby-score { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+    .nearby-score-badge {
+      background: var(--bui_color_brand); color: #fff;
+      font-size: 11px; font-weight: 700; border-radius: 4px 4px 4px 0;
+      padding: 2px 6px;
+    }
+    .nearby-score-text { font-size: 12px; color: var(--bui_color_foreground_alt); }
+    .nearby-price { font-size: 13px; }
+    .nearby-price strong { font-size: 16px; font-weight: 700; }
+
+    /* GENIUS BANNER */
+    .genius-bar {
+      background: linear-gradient(135deg, #003580 0%, #004cb8 100%);
+      color: #fff; padding: 10px 16px; border-radius: 4px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px; font-size: 13px;
+    }
+    .genius-logo {
+      background: #003580; border: 2px solid var(--bui_color_accent);
+      color: var(--bui_color_accent); font-size: 11px; font-weight: 800;
+      padding: 2px 8px; border-radius: 2px; white-space: nowrap;
+    }
+
+    /* FOOTER */
+    .site-footer { background: var(--bui_color_brand); color: rgba(255,255,255,0.8); margin-top: 32px; }
+    .footer-links-section { padding: 24px; max-width: 1140px; margin: 0 auto; }
+    .footer-columns { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .footer-col-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-col a { display: block; font-size: 12px; color: rgba(255,255,255,0.7); padding: 2px 0; }
+    .footer-col a:hover { color: #fff; text-decoration: none; }
+    .footer-bottom { padding: 16px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; }
+    .footer-logo { font-size: 20px; font-weight: 800; color: #fff; }
+    .footer-logo span { color: var(--bui_color_accent); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+    /* PROGRESS BAR */
+    .score-bar-wrap { margin-bottom: 10px; }
+    .score-bar { height: 8px; background: #e7e7e7; border-radius: 4px; overflow: hidden; }
+    .score-bar-inner { height: 100%; border-radius: 4px; background: var(--bui_color_brand); }
+
+    /* MAP PREVIEW */
+    .map-preview {
+      border: 1px solid var(--bui_color_border_alt);
+      border-radius: 4px; overflow: hidden; position: relative;
+      height: 160px; background: #e8edf5;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-top: 12px;
+    }
+    .map-preview-text { text-align: center; }
+    .map-preview-text svg { display: block; margin: 0 auto 8px; color: var(--bui_color_cta); }
+    .map-preview-text a { font-size: 13px; font-weight: 700; }
+
+    /* AVAILABILITY HEADER */
+    .avail-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
+    }
+
+    /* TAGS */
+    .tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 700; padding: 2px 8px;
+      border-radius: 2px;
+    }
+    .tag-blue { background: #f0f6ff; color: var(--bui_color_cta); }
+    .tag-green { background: #e8f9ee; color: var(--bui_color_constructive); }
+    .tag-orange { background: #fef3ec; color: var(--bui_color_callout); }
+    .tag-grey { background: #f5f5f5; color: var(--bui_color_foreground_alt); }
+
+    .section-card + .section-card { margin-top: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ======================== HEADER ======================== -->
+<header class="site-header">
+  <div class="header-top">
+    <div class="logo">booking<span>.</span>com</div>
+    <nav class="header-nav">
+      <a href="#">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:3px;"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+        Stays
+      </a>
+      <a href="#">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:3px;"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+        Flights
+      </a>
+      <a href="#">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:3px;"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+        Car rentals
+      </a>
+      <a href="#">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:3px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Attractions
+      </a>
+      <a href="#">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:3px;"><path d="M20 8H4l-2 6v2h2v4h2v-4h12v4h2v-4h2v-2l-2-6zm-9 5H9v-2h2v2zm4 0h-2v-2h2v2zM4.5 6h15l-1.5-4h-12z"/></svg>
+        Airport taxis
+      </a>
+    </nav>
+    <div class="header-actions">
+      <a href="#" style="color:#fff;font-size:13px;text-decoration:none;padding:6px 8px;border-radius:3px;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">EUR</a>
+      <a href="#" style="color:#fff;font-size:13px;text-decoration:none;padding:6px 8px;border-radius:3px;display:flex;align-items:center;gap:4px;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">
+        <svg width="18" height="12" viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="6"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="white" stroke-width="10"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></svg>
+        EN
+      </a>
+      <button class="btn-outline-white">Register</button>
+      <button class="btn-white">Sign in</button>
+    </div>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div class="search-bar">
+    <div class="search-form">
+      <div class="search-input" style="flex:2;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#595959" style="flex-shrink:0;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span class="search-input-text">Hotel Metropole Brussels</span>
+      </div>
+      <div class="search-input">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#595959" style="flex-shrink:0;"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>
+        <span class="search-input-text">Fri 14 Mar — Sun 16 Mar</span>
+      </div>
+      <div class="search-input">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#595959" style="flex-shrink:0;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        <span class="search-input-text">2 adults · 0 children · 1 room</span>
+      </div>
+      <button class="search-btn">Search</button>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb">
+      <a href="#">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">Belgium</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">Brussels</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">Brussels City Centre</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Hotel Metropole Brussels</span>
+    </div>
+  </div>
+</header>
+
+<!-- ======================== MAIN ======================== -->
+<main class="page-main">
+
+  <!-- HOTEL HEADER CARD -->
+  <div class="hotel-header">
+    <div class="hotel-header-row">
+      <div class="hotel-meta">
+        <div class="hotel-badges">
+          <div class="badge-sustainable">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 22.69L5.71 23l1-2.3A4.49 4.49 0 008 21c19 2 22-29 22-29s-9 7-13 16"/></svg>
+            Sustainable property
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <h1 class="hotel-name">Hotel Metropole Brussels</h1>
+          <div class="star-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="hotel-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>Place de Brouckère 31, Brussels City Centre, 1000 Brussels, Belgium</span>
+          <span class="location-sep">—</span>
+          <a href="#">Show on map</a>
+          <span class="location-sep">—</span>
+          <a href="#">Excellent location — show map</a>
+          <span style="color:#595959;">9.4 Location score!</span>
+        </div>
+        <div class="action-buttons">
+          <button class="btn-heart">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            Save
+          </button>
+          <button class="btn-heart">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            Share
+          </button>
+        </div>
+      </div>
+      <div class="score-box">
+        <div class="score-row">
+          <div>
+            <div class="score-label">Exceptional</div>
+            <div class="score-sublabel">2,847 reviews</div>
+          </div>
+          <div class="score-badge">9.2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <div class="gallery-grid">
+      <div class="gallery-main">
+        <img src="https://placehold.co/780x400/c9d8e8/495b6e?text=Hotel+Exterior" alt="Hotel Metropole exterior">
+      </div>
+      <div class="gallery-thumbs">
+        <div class="gallery-thumb">
+          <img src="https://placehold.co/390x200/dbe8d0/4a6340?text=Superior+Room" alt="Superior Room">
+        </div>
+        <div class="gallery-thumb">
+          <img src="https://placehold.co/390x200/e8d8c9/6e4a35?text=Restaurant" alt="Restaurant">
+        </div>
+        <div class="gallery-thumb">
+          <img src="https://placehold.co/390x200/d8d0e8/4a3d6e?text=Lobby" alt="Lobby">
+        </div>
+        <div class="gallery-thumb">
+          <img src="https://placehold.co/390x200/e8e0d0/6e5e3a?text=Bathroom" alt="Bathroom">
+          <button class="gallery-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/></svg>
+            See all 94 photos
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPERTY NAV TABS -->
+  <div style="background:#fff;border-top:1px solid #e7e7e7;margin-top:0;border-bottom:1px solid #e7e7e7;">
+    <div style="display:flex;gap:0;max-width:100%;overflow-x:auto;">
+      <a href="#" style="padding:12px 16px;font-size:13px;font-weight:700;color:#1a1a1a;white-space:nowrap;border-bottom:3px solid #006ce4;text-decoration:none;">Overview</a>
+      <a href="#" style="padding:12px 16px;font-size:13px;color:#595959;white-space:nowrap;border-bottom:3px solid transparent;text-decoration:none;">Info &amp; prices</a>
+      <a href="#" style="padding:12px 16px;font-size:13px;color:#595959;white-space:nowrap;border-bottom:3px solid transparent;text-decoration:none;">Facilities</a>
+      <a href="#" style="padding:12px 16px;font-size:13px;color:#595959;white-space:nowrap;border-bottom:3px solid transparent;text-decoration:none;">House rules</a>
+      <a href="#" style="padding:12px 16px;font-size:13px;color:#595959;white-space:nowrap;border-bottom:3px solid transparent;text-decoration:none;">The fine print</a>
+      <a href="#" style="padding:12px 16px;font-size:13px;color:#595959;white-space:nowrap;border-bottom:3px solid transparent;text-decoration:none;">Guest reviews (2,847)</a>
+    </div>
+  </div>
+
+  <!-- GENIUS BANNER -->
+  <div class="genius-bar" style="margin-top:12px;">
+    <div class="genius-logo">GENIUS</div>
+    <div>
+      <strong>You're eligible for a Genius discount at this property!</strong>
+      Sign in to save up to 10% on your stay.
+    </div>
+    <a href="#" style="color:var(--bui_color_accent);font-weight:700;margin-left:auto;white-space:nowrap;">Sign in</a>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="property-layout">
+
+    <!-- ===== LEFT CONTENT ===== -->
+    <div class="property-content">
+
+      <!-- MOST POPULAR FACILITIES -->
+      <div class="section-card">
+        <div class="section-title-sm">Most popular facilities</div>
+        <div class="facilities-grid">
+          <div class="facility-item"><span class="facility-icon">🍳</span> Breakfast available</div>
+          <div class="facility-item"><span class="facility-icon">🍽️</span> Restaurant</div>
+          <div class="facility-item"><span class="facility-icon">🅿️</span> Parking available</div>
+          <div class="facility-item"><span class="facility-icon">📶</span> Free WiFi</div>
+          <div class="facility-item"><span class="facility-icon">💼</span> Airport shuttle</div>
+          <div class="facility-item"><span class="facility-icon">🛎️</span> Room service</div>
+          <div class="facility-item"><span class="facility-icon">🏋️</span> Fitness centre</div>
+          <div class="facility-item"><span class="facility-icon">🚭</span> Non-smoking rooms</div>
+          <div class="facility-item"><span class="facility-icon">🍸</span> Bar</div>
+          <div class="facility-item"><span class="facility-icon">♿</span> Facilities for disabled guests</div>
+        </div>
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="section-card">
+        <div class="section-title">Property description</div>
+        <p class="description-text">
+          Located in the heart of Brussels, Hotel Metropole is a historic landmark that has been welcoming guests since 1895. Occupying a magnificent Art Nouveau building on Place de Brouckère, this iconic property blends 19th-century grandeur with modern comfort.
+        </p>
+        <p class="description-text">
+          The hotel features 241 beautifully appointed rooms and suites, each decorated with period furniture and offering every modern amenity. Guests can enjoy the renowned L'Alban Chambon restaurant, the historic Café Métropole, and the elegant lounge bar.
+        </p>
+        <p class="description-text">
+          The Grand' Place is just a 5-minute walk away, and the hotel is conveniently located near Brussels Central Station, making it the ideal base for exploring the Belgian capital.
+        </p>
+        <div class="map-preview">
+          <div class="map-preview-text">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#006ce4"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <a href="#">Show on map — Excellent location: 9.4/10</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROOM AVAILABILITY -->
+      <div class="section-card">
+        <div class="avail-header">
+          <div class="section-title" style="margin-bottom:0;border-bottom:none;padding-bottom:0;">
+            Availability for Hotel Metropole Brussels
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span style="font-size:12px;color:#595959;">2 adults · 1 room · 2 nights</span>
+            <button class="btn-reserve" style="padding:8px 14px;font-size:13px;width:auto;">Change search</button>
+          </div>
+        </div>
+        <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:3px;padding:8px 12px;margin:12px 0;display:flex;align-items:center;gap:8px;font-size:13px;">
+          <span style="color:#f56700;font-size:16px;">🔥</span>
+          <span><strong>In high demand!</strong> 38 travellers have viewed this property in the last 10 minutes</span>
+        </div>
+        <div style="margin-top:8px;overflow-x:auto;">
+          <table class="room-table">
+            <thead>
+              <tr>
+                <th style="width:240px;">Room type</th>
+                <th>Number of guests</th>
+                <th>Today's price</th>
+                <th>Choices</th>
+                <th style="width:130px;">Select rooms</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Room 1 -->
+              <tr>
+                <td>
+                  <img class="room-image" src="https://placehold.co/80x60/c9d8e8/495b6e?text=Room" alt="Classic Room">
+                  <div class="room-name">Classic Double Room</div>
+                  <div class="room-detail">1 double bed</div>
+                  <div style="margin-top:6px;">
+                    <ul class="room-perks">
+                      <li><span class="perk-icon">✓</span> Free WiFi</li>
+                      <li><span class="perk-icon">✓</span> Breakfast included</li>
+                      <li><span class="perk-icon">✓</span> Flat-screen TV</li>
+                      <li><span class="perk-icon">✓</span> Air conditioning</li>
+                    </ul>
+                  </div>
+                </td>
+                <td>
+                  <div style="display:flex;gap:4px;align-items:center;font-size:20px;">👤👤</div>
+                </td>
+                <td>
+                  <div class="badge-free-cancel">Free cancellation</div><br>
+                  <div class="room-price">€149</div>
+                  <div class="room-price-note">per night · 2 nights: €298</div>
+                  <div style="font-size:11px;color:#595959;margin-top:2px;">+ €52 taxes and charges</div>
+                </td>
+                <td>
+                  <div class="badge-free-cancel" style="margin-bottom:4px;">Free cancellation</div>
+                  <div style="font-size:12px;color:#595959;margin-bottom:6px;">Before 13 Mar 2026</div>
+                  <div class="badge-limited">Only 2 rooms left!</div>
+                  <div style="margin-top:8px;">
+                    <input type="checkbox" id="breakfast1" style="cursor:pointer;">
+                    <label for="breakfast1" style="font-size:12px;cursor:pointer;"> Include breakfast (+€28)</label>
+                  </div>
+                </td>
+                <td>
+                  <select style="width:100%;border:1px solid #e7e7e7;border-radius:3px;padding:6px;font-size:13px;margin-bottom:8px;">
+                    <option>1</option><option>2</option><option>3</option>
+                  </select>
+                  <button class="btn-select">Reserve</button>
+                  <div style="font-size:11px;color:#595959;text-align:center;margin-top:4px;">No credit card needed</div>
+                </td>
+              </tr>
+
+              <!-- Room 2 -->
+              <tr>
+                <td>
+                  <img class="room-image" src="https://placehold.co/80x60/dbe8d0/4a6340?text=Suite" alt="Junior Suite">
+                  <div class="room-name">Junior Suite</div>
+                  <div class="room-detail">1 king bed or 2 twin beds</div>
+                  <div style="margin-top:6px;">
+                    <ul class="room-perks">
+                      <li><span class="perk-icon">✓</span> Free WiFi</li>
+                      <li><span class="perk-icon">✓</span> Breakfast included</li>
+                      <li><span class="perk-icon">✓</span> Seating area</li>
+                      <li><span class="perk-icon">✓</span> City view</li>
+                    </ul>
+                  </div>
+                </td>
+                <td>
+                  <div style="display:flex;gap:4px;align-items:center;font-size:20px;">👤👤👤</div>
+                </td>
+                <td>
+                  <div class="badge-free-cancel">Free cancellation</div><br>
+                  <div class="room-price">€229</div>
+                  <div class="room-price-note">per night · 2 nights: €458</div>
+                  <div style="font-size:11px;color:#595959;margin-top:2px;">+ €78 taxes and charges</div>
+                </td>
+                <td>
+                  <div class="badge-free-cancel" style="margin-bottom:4px;">Free cancellation</div>
+                  <div style="font-size:12px;color:#595959;margin-bottom:6px;">Before 13 Mar 2026</div>
+                  <div style="margin-top:8px;">
+                    <input type="checkbox" id="breakfast2" style="cursor:pointer;">
+                    <label for="breakfast2" style="font-size:12px;cursor:pointer;"> Include breakfast (+€28)</label>
+                  </div>
+                </td>
+                <td>
+                  <select style="width:100%;border:1px solid #e7e7e7;border-radius:3px;padding:6px;font-size:13px;margin-bottom:8px;">
+                    <option>1</option><option>2</option><option>3</option>
+                  </select>
+                  <button class="btn-select">Reserve</button>
+                  <div style="font-size:11px;color:#595959;text-align:center;margin-top:4px;">No credit card needed</div>
+                </td>
+              </tr>
+
+              <!-- Room 3 -->
+              <tr>
+                <td>
+                  <img class="room-image" src="https://placehold.co/80x60/e8d8c9/6e4a35?text=Deluxe" alt="Deluxe Room">
+                  <div class="room-name">Deluxe Double Room</div>
+                  <div class="room-detail">1 double bed</div>
+                  <div style="margin-top:6px;">
+                    <ul class="room-perks">
+                      <li><span class="perk-icon">✓</span> Free WiFi</li>
+                      <li><span class="perk-icon">✓</span> Safe</li>
+                      <li><span class="perk-icon">✓</span> Minibar</li>
+                      <li><span class="perk-icon">✓</span> Marble bathroom</li>
+                    </ul>
+                  </div>
+                </td>
+                <td>
+                  <div style="display:flex;gap:4px;align-items:center;font-size:20px;">👤👤</div>
+                </td>
+                <td>
+                  <div style="background:#fff5f5;color:#d4111e;border-radius:2px;font-size:11px;font-weight:700;padding:2px 6px;display:inline-block;margin-bottom:4px;">Non-refundable</div><br>
+                  <div style="font-size:12px;color:#595959;text-decoration:line-through;margin-bottom:2px;">€192</div>
+                  <div class="room-price">€179</div>
+                  <div class="room-price-note">per night · 2 nights: €358</div>
+                  <div style="font-size:11px;color:#595959;margin-top:2px;">+ €62 taxes and charges</div>
+                </td>
+                <td>
+                  <div style="background:#fff5f5;color:#d4111e;border-radius:2px;font-size:11px;font-weight:700;padding:2px 6px;display:inline-block;margin-bottom:4px;">Non-refundable</div>
+                  <div style="font-size:12px;color:#595959;margin-bottom:6px;">No free cancellation</div>
+                  <div class="badge-limited">Only 1 room left!</div>
+                </td>
+                <td>
+                  <select style="width:100%;border:1px solid #e7e7e7;border-radius:3px;padding:6px;font-size:13px;margin-bottom:8px;">
+                    <option>1</option><option>2</option>
+                  </select>
+                  <button class="btn-select">Reserve</button>
+                  <div style="font-size:11px;color:#595959;text-align:center;margin-top:4px;">No credit card needed</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GUEST REVIEWS -->
+      <div class="section-card">
+        <div class="section-title">Guest reviews</div>
+        <div class="reviews-header">
+          <div class="overall-score-box">
+            <div class="overall-score-num">9.2</div>
+            <div class="overall-score-text">Exceptional</div>
+            <div class="overall-score-count">2,847 reviews</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:13px;color:#595959;margin-bottom:12px;">
+              Guests who stayed here loved it! 94% of guests found this property "Exceptional" or "Wonderful".
+            </div>
+            <div class="review-cats">
+              <div class="review-cat-row">
+                <div class="review-cat-label">
+                  <span>Staff</span><span style="font-weight:700;color:#1a1a1a;">9.6</span>
+                </div>
+                <div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-inner" style="width:96%;"></div></div></div>
+              </div>
+              <div class="review-cat-row">
+                <div class="review-cat-label">
+                  <span>Facilities</span><span style="font-weight:700;color:#1a1a1a;">9.0</span>
+                </div>
+                <div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-inner" style="width:90%;"></div></div></div>
+              </div>
+              <div class="review-cat-row">
+                <div class="review-cat-label">
+                  <span>Cleanliness</span><span style="font-weight:700;color:#1a1a1a;">9.4</span>
+                </div>
+                <div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-inner" style="width:94%;"></div></div></div>
+              </div>
+              <div class="review-cat-row">
+                <div class="review-cat-label">
+                  <span>Comfort</span><span style="font-weight:700;color:#1a1a1a;">9.1</span>
+                </div>
+                <div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-inner" style="width:91%;"></div></div></div>
+              </div>
+              <div class="review-cat-row">
+                <div class="review-cat-label">
+                  <span>Value for money</span><span style="font-weight:700;color:#1a1a1a;">8.8</span>
+                </div>
+                <div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-inner" style="width:88%;"></div></div></div>
+              </div>
+              <div class="review-cat-row">
+                <div class="review-cat-label">
+                  <span>Location</span><span style="font-weight:700;color:#1a1a1a;">9.4</span>
+                </div>
+                <div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-inner" style="width:94%;"></div></div></div>
+              </div>
+              <div class="review-cat-row">
+                <div class="review-cat-label">
+                  <span>Free WiFi</span><span style="font-weight:700;color:#1a1a1a;">9.0</span>
+                </div>
+                <div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-inner" style="width:90%;"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WHAT GUESTS LOVED -->
+        <div style="background:#f0f6ff;border:1px solid #cce0ff;border-radius:4px;padding:14px 16px;margin-bottom:16px;">
+          <div style="font-size:13px;font-weight:700;color:#003b95;margin-bottom:10px;">What guests loved most</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="display:flex;align-items:flex-start;gap:6px;font-size:12px;color:#595959;">
+              <span style="color:#003b95;font-size:16px;">❝</span>
+              <span>The location is absolutely perfect — steps from Grand Place and everything you need!</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:6px;font-size:12px;color:#595959;">
+              <span style="color:#003b95;font-size:16px;">❝</span>
+              <span>Stunning historic building. The lobby made me feel like I stepped back in time.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:6px;font-size:12px;color:#595959;">
+              <span style="color:#003b95;font-size:16px;">❝</span>
+              <span>Staff were incredibly welcoming and professional. Top notch service throughout.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:6px;font-size:12px;color:#595959;">
+              <span style="color:#003b95;font-size:16px;">❝</span>
+              <span>The breakfast spread was phenomenal. Great variety, fresh ingredients, excellent value.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- REVIEW FILTER TABS -->
+        <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+          <button style="background:var(--bui_color_brand);color:#fff;border:none;border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;">All (2,847)</button>
+          <button style="background:#f5f5f5;border:1px solid #e7e7e7;border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;">Exceptional (1,834)</button>
+          <button style="background:#f5f5f5;border:1px solid #e7e7e7;border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;">Wonderful (487)</button>
+          <button style="background:#f5f5f5;border:1px solid #e7e7e7;border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;">Very Good (342)</button>
+          <button style="background:#f5f5f5;border:1px solid #e7e7e7;border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;">Good (184)</button>
+        </div>
+
+        <div class="review-cards">
+          <div class="review-card">
+            <div class="review-score-inline">9.6</div>
+            <div class="reviewer-name">Sophie M.</div>
+            <div class="reviewer-meta">🇫🇷 France · 2 nights · February 2026</div>
+            <div class="review-like"><span>+</span><span>Absolutely stunning hotel! The Art Nouveau architecture is breathtaking. The staff was incredibly helpful and the location could not be better for visiting Brussels.</span></div>
+            <div class="review-dislike"><span>−</span><span>The restaurant is a bit pricey but the quality justifies it.</span></div>
+          </div>
+          <div class="review-card">
+            <div class="review-score-inline">9.2</div>
+            <div class="reviewer-name">Thomas K.</div>
+            <div class="reviewer-meta">🇩🇪 Germany · 3 nights · February 2026</div>
+            <div class="review-like"><span>+</span><span>Historic hotel with excellent service. The room was spacious and beautifully decorated. Breakfast was outstanding with a great selection of local products.</span></div>
+            <div class="review-dislike"><span>−</span><span>Parking nearby is limited and expensive.</span></div>
+          </div>
+          <div class="review-card">
+            <div class="review-score-inline">10.0</div>
+            <div class="reviewer-name">Emma L.</div>
+            <div class="reviewer-meta">🇬🇧 United Kingdom · 1 night · January 2026</div>
+            <div class="review-like"><span>+</span><span>Perfect in every way. The Junior Suite exceeded all expectations. The Café Métropole is a must-visit — the hot chocolate is incredible!</span></div>
+            <div class="review-dislike"><span>−</span><span>Nothing negative to say!</span></div>
+          </div>
+          <div class="review-card">
+            <div class="review-score-inline">8.8</div>
+            <div class="reviewer-name">Marco V.</div>
+            <div class="reviewer-meta">🇮🇹 Italy · 2 nights · January 2026</div>
+            <div class="review-like"><span>+</span><span>Great historical atmosphere. The lobby and common areas are stunning. Very central location, walked everywhere easily.</span></div>
+            <div class="review-dislike"><span>−</span><span>Room was slightly smaller than expected for the price, but still comfortable.</span></div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+          <a href="#" style="font-size:13px;font-weight:700;">Read all 2,847 reviews ›</a>
+        </div>
+      </div>
+
+      <!-- FACILITIES -->
+      <div class="section-card">
+        <div class="section-title">Facilities of Hotel Metropole Brussels</div>
+        <div class="facilities-columns">
+          <div>
+            <div class="facility-group-title">Bathroom</div>
+            <ul class="facility-list">
+              <li><span class="fac-check">✓</span> Private bathroom</li>
+              <li><span class="fac-check">✓</span> Shower</li>
+              <li><span class="fac-check">✓</span> Bathtub or shower</li>
+              <li><span class="fac-check">✓</span> Hairdryer</li>
+              <li><span class="fac-check">✓</span> Slippers</li>
+              <li><span class="fac-check">✓</span> Bathrobes</li>
+              <li><span class="fac-check">✓</span> Free toiletries</li>
+            </ul>
+            <div class="facility-group-title" style="margin-top:14px;">Bedroom</div>
+            <ul class="facility-list">
+              <li><span class="fac-check">✓</span> Wardrobe or closet</li>
+              <li><span class="fac-check">✓</span> Linen</li>
+              <li><span class="fac-check">✓</span> Extra long beds (> 2 m)</li>
+              <li><span class="fac-check">✓</span> Blackout curtains</li>
+            </ul>
+          </div>
+          <div>
+            <div class="facility-group-title">General</div>
+            <ul class="facility-list">
+              <li><span class="fac-check">✓</span> Air conditioning</li>
+              <li><span class="fac-check">✓</span> Heating</li>
+              <li><span class="fac-check">✓</span> Lift</li>
+              <li><span class="fac-check">✓</span> Non-smoking rooms</li>
+              <li><span class="fac-check">✓</span> Soundproofed rooms</li>
+              <li><span class="fac-check">✓</span> Hardwood or parquet floors</li>
+              <li><span class="fac-check">✓</span> Safe</li>
+            </ul>
+            <div class="facility-group-title" style="margin-top:14px;">Media & Technology</div>
+            <ul class="facility-list">
+              <li><span class="fac-check">✓</span> Flat-screen TV</li>
+              <li><span class="fac-check">✓</span> Free WiFi</li>
+              <li><span class="fac-check">✓</span> Telephone</li>
+              <li><span class="fac-check">✓</span> Cable channels</li>
+            </ul>
+          </div>
+          <div>
+            <div class="facility-group-title">Services</div>
+            <ul class="facility-list">
+              <li><span class="fac-check">✓</span> 24-hour front desk</li>
+              <li><span class="fac-check">✓</span> Daily housekeeping</li>
+              <li><span class="fac-check">✓</span> Room service</li>
+              <li><span class="fac-check">✓</span> Currency exchange</li>
+              <li><span class="fac-check">✓</span> Concierge service</li>
+              <li><span class="fac-check">✓</span> Luggage storage</li>
+              <li><span class="fac-check">✓</span> Express check-in/check-out</li>
+            </ul>
+            <div class="facility-group-title" style="margin-top:14px;">Food & Drink</div>
+            <ul class="facility-list">
+              <li><span class="fac-check">✓</span> Restaurant</li>
+              <li><span class="fac-check">✓</span> Bar</li>
+              <li><span class="fac-check">✓</span> Breakfast in the room</li>
+              <li><span class="fac-check">✓</span> Minibar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOUSE RULES -->
+      <div class="section-card">
+        <div class="section-title">House rules</div>
+        <div style="margin-bottom:4px;font-size:13px;color:#595959;margin-bottom:16px;">Hotel Metropole Brussels takes special requests – add in the next step!</div>
+
+        <div class="rule-row"><div class="rule-label">Check-in</div><div class="rule-value">From 15:00 (3:00 PM)</div></div>
+        <div class="rule-row"><div class="rule-label">Check-out</div><div class="rule-value">Until 12:00 (noon)</div></div>
+        <div class="rule-row"><div class="rule-label">Cancellation/prepayment</div><div class="rule-value">Cancellation and prepayment policies vary according to accommodation type. Please enter your dates to check specific conditions.</div></div>
+        <div class="rule-row"><div class="rule-label">Children and beds</div><div class="rule-value"><span class="rule-badge-ok">✓</span> Children of all ages are welcome.<br><br>Children 12 and above are considered adults.<br><br>To see correct prices and occupancy information, please add the number of children in your group and their ages.</div></div>
+        <div class="rule-row"><div class="rule-label">Pets</div><div class="rule-value"><span class="rule-badge-no">✗</span> Pets are not allowed.</div></div>
+        <div class="rule-row"><div class="rule-label">Groups</div><div class="rule-value">When booking more than 5 rooms, different policies and additional supplements may apply.</div></div>
+        <div class="rule-row"><div class="rule-label">Accepted payment methods</div><div class="rule-value" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <span style="background:#1a1a73;color:#fff;padding:3px 8px;border-radius:3px;font-size:11px;font-weight:700;">VISA</span>
+          <span style="background:#eb001b;color:#fff;padding:3px 8px;border-radius:3px;font-size:11px;font-weight:700;">Mastercard</span>
+          <span style="background:#003087;color:#fff;padding:3px 8px;border-radius:3px;font-size:11px;font-weight:700;">PayPal</span>
+          <span style="background:#006fcf;color:#fff;padding:3px 8px;border-radius:3px;font-size:11px;font-weight:700;">AMEX</span>
+        </div></div>
+      </div>
+
+      <!-- FINE PRINT -->
+      <div class="section-card">
+        <div class="section-title">The fine print</div>
+        <p class="description-text">Guests are required to show a photo ID and credit card upon check-in. Please note that all Special Requests are subject to availability and additional charges may apply.</p>
+        <p class="description-text">Please note that the credit card used for the reservation must be presented upon check-in.</p>
+        <p class="description-text">In response to the coronavirus (COVID-19), additional safety and sanitation measures are in effect at this property.</p>
+        <p class="description-text">Due to the coronavirus (COVID-19), this property has restricted the services available, including food and beverage, and facilities.</p>
+      </div>
+
+      <!-- FAQ -->
+      <div class="section-card">
+        <div class="section-title">FAQs about Hotel Metropole Brussels</div>
+        <div class="faq-item">
+          <div class="faq-q">What is the check-in and check-out time at Hotel Metropole Brussels? <span>▼</span></div>
+          <div class="faq-a">Check-in at Hotel Metropole Brussels is from 15:00, and check-out is until 12:00.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How far is Hotel Metropole Brussels from the centre of Brussels? <span>▼</span></div>
+          <div class="faq-a">Hotel Metropole Brussels is 200 m from the centre of Brussels. All distances are measured in straight lines. Actual travel distances may vary.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Does Hotel Metropole Brussels have a restaurant on site? <span>▼</span></div>
+          <div class="faq-a">Yes, Hotel Metropole Brussels has a restaurant on-site: L'Alban Chambon.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is breakfast included in the price at Hotel Metropole Brussels? <span>▼</span></div>
+          <div class="faq-a">Breakfast options are available at Hotel Metropole Brussels. Please note that breakfast may or may not be included in the room rate. To view rates that include breakfast, please filter by 'Breakfast Included' in the property's availability.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What are the cancellation policies at Hotel Metropole Brussels? <span>▼</span></div>
+          <div class="faq-a">Hotel Metropole Brussels offers free cancellation on select room types. To see the specific cancellation policies for each room type, enter your desired dates and search for available rooms above.</div>
+        </div>
+      </div>
+
+      <!-- NEARBY HOTELS -->
+      <div class="section-card">
+        <div class="section-title">Other hotels guests liked</div>
+        <div class="nearby-grid">
+          <div class="nearby-card">
+            <img src="https://placehold.co/220x110/c9d8e8/495b6e?text=Nearby+Hotel" alt="Nearby Hotel">
+            <div class="nearby-card-body">
+              <div class="nearby-name">Steigenberger Wiltcher's</div>
+              <div class="nearby-score"><div class="nearby-score-badge">8.9</div><div class="nearby-score-text">Excellent · 1,432 reviews</div></div>
+              <div class="nearby-price">From <strong>€189</strong>/night</div>
+            </div>
+          </div>
+          <div class="nearby-card">
+            <img src="https://placehold.co/220x110/dbe8d0/4a6340?text=Nearby+Hotel" alt="Nearby Hotel">
+            <div class="nearby-card-body">
+              <div class="nearby-name">NH Brussels Grand Place Arenberg</div>
+              <div class="nearby-score"><div class="nearby-score-badge">8.6</div><div class="nearby-score-text">Excellent · 892 reviews</div></div>
+              <div class="nearby-price">From <strong>€134</strong>/night</div>
+            </div>
+          </div>
+          <div class="nearby-card">
+            <img src="https://placehold.co/220x110/e8d8c9/6e4a35?text=Nearby+Hotel" alt="Nearby Hotel">
+            <div class="nearby-card-body">
+              <div class="nearby-name">Sofitel Brussels Le Louise</div>
+              <div class="nearby-score"><div class="nearby-score-badge">9.1</div><div class="nearby-score-text">Exceptional · 2,187 reviews</div></div>
+              <div class="nearby-price">From <strong>€209</strong>/night</div>
+            </div>
+          </div>
+          <div class="nearby-card">
+            <img src="https://placehold.co/220x110/d8d0e8/4a3d6e?text=Nearby+Hotel" alt="Nearby Hotel">
+            <div class="nearby-card-body">
+              <div class="nearby-name">Radisson Collection Hotel</div>
+              <div class="nearby-score"><div class="nearby-score-badge">8.4</div><div class="nearby-score-text">Very Good · 1,654 reviews</div></div>
+              <div class="nearby-price">From <strong>€159</strong>/night</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- ===== END LEFT CONTENT ===== -->
+
+    <!-- ===== SIDEBAR ===== -->
+    <div class="property-sidebar">
+      <div class="booking-card">
+        <div style="background:var(--bui_color_brand);color:#fff;border-radius:3px;padding:10px 12px;margin-bottom:12px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          Exceptional: score 9.2
+        </div>
+
+        <div class="price-line">Starting from</div>
+        <div class="price-big">€149</div>
+        <div class="price-note">per night · excludes taxes & fees</div>
+
+        <div class="date-fields">
+          <div class="date-field">
+            <label>Check-in</label>
+            <div class="date-val">Fri 14 Mar 2026</div>
+          </div>
+          <div class="date-field">
+            <label>Check-out</label>
+            <div class="date-val">Sun 16 Mar 2026</div>
+          </div>
+        </div>
+
+        <div class="guests-field">
+          <label>Guests</label>
+          <div class="guests-val">2 adults · 1 room</div>
+        </div>
+
+        <div class="work-check">
+          <input type="checkbox" id="work-trip">
+          <label for="work-trip">I'm travelling for work</label>
+        </div>
+
+        <button class="btn-reserve">Reserve</button>
+        <div class="no-card">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          No credit card needed
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <ul class="sidebar-perks">
+          <li><span class="perk-icon">✓</span> Free cancellation on most rooms</li>
+          <li><span class="perk-icon">✓</span> No booking fees</li>
+          <li><span class="perk-icon">✓</span> Confirmation is immediate</li>
+          <li><span class="perk-icon">✓</span> Safe & secure — we never share your details with the hotel</li>
+        </ul>
+
+        <hr class="sidebar-divider">
+
+        <div style="font-size:12px;color:#595959;text-align:center;">
+          <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px;">🔒 Trusted & safe booking</div>
+          We use industry-standard encryption to protect your personal information.
+        </div>
+      </div>
+
+      <!-- LOCATION CARD -->
+      <div style="background:#fff;border-radius:4px;padding:16px;margin-top:16px;box-shadow:var(--bui_shadow_100);">
+        <div class="section-title-sm">Good location!</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="background:var(--bui_color_brand);color:#fff;border-radius:6px 6px 6px 0;padding:8px 10px;font-size:18px;font-weight:700;flex-shrink:0;">9.4</div>
+          <div style="font-size:13px;color:#595959;">Guests loved walking around the neighbourhood! Score is among the top 5% in Brussels</div>
+        </div>
+        <div class="map-preview" style="height:120px;margin-top:0;">
+          <div class="map-preview-text">
+            <a href="#" style="font-size:12px;">Show on map</a>
+          </div>
+        </div>
+        <div style="margin-top:10px;">
+          <div style="font-size:12px;font-weight:700;margin-bottom:6px;">Nearby landmarks:</div>
+          <div style="font-size:12px;color:#595959;display:flex;flex-direction:column;gap:4px;">
+            <div style="display:flex;justify-content:space-between;"><span>Grand Place</span><span style="font-weight:700;">280 m</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Manneken Pis</span><span style="font-weight:700;">450 m</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Brussels Central Station</span><span style="font-weight:700;">650 m</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Brussels Airport</span><span style="font-weight:700;">14 km</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== END SIDEBAR ===== -->
+
+  </div>
+  <!-- END MAIN LAYOUT -->
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links-section">
+    <div class="footer-columns">
+      <div class="footer-col">
+        <div class="footer-col-title">Support</div>
+        <a href="#">Coronavirus (COVID-19) FAQs</a>
+        <a href="#">Help centre</a>
+        <a href="#">Partner help</a>
+        <a href="#">Careers</a>
+        <a href="#">Sustainability</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Discover</div>
+        <a href="#">Countries</a>
+        <a href="#">Regions</a>
+        <a href="#">Cities</a>
+        <a href="#">Districts</a>
+        <a href="#">Airports</a>
+        <a href="#">Hotels</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Booking.com for Business</div>
+        <a href="#">Booking.com for Business</a>
+        <a href="#">Attractions</a>
+        <a href="#">Travel Articles</a>
+        <a href="#">Booking.com for Travel Agents</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Partners</div>
+        <a href="#">Partner Help</a>
+        <a href="#">List your property</a>
+        <a href="#">Become an affiliate</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Settings</div>
+        <a href="#">🇬🇧 English (UK)</a>
+        <a href="#">EUR €</a>
+        <a href="#">Customer Service</a>
+        <a href="#">My account</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">booking<span>.</span>com</div>
+      <div class="footer-copy">Copyright © 1996–2026 Booking.com™. All rights reserved.</div>
+      <div style="display:flex;gap:12px;">
+        <a href="#" style="color:rgba(255,255,255,0.7);font-size:12px;">Terms &amp; conditions</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);font-size:12px;">Privacy &amp; cookie statement</a>
+        <a href="#" style="color:rgba(255,255,255,0.7);font-size:12px;">About Booking.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
